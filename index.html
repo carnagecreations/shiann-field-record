@@ -47,6 +47,24 @@
   }
   .foot-ico{display:inline-flex; align-items:center; justify-content:center; color:var(--rule-strong); flex-shrink:0;}
   .foot-ico svg{display:block; width:1em; height:1em;}
+
+  /* ===== Dino mascot ===== */
+  .mascot{display:flex; gap:16px; align-items:center; margin-top:18px; padding:14px 18px; border:1px dashed var(--rule-strong); border-radius:8px; background:var(--paper-raised);}
+  .mascot .dino-ico{width:58px; height:36px; color:var(--moss); flex-shrink:0; transition:transform .25s ease;}
+  .mascot .dino-ico svg{width:100%; height:100%; display:block;}
+  .mascot:hover .dino-ico{transform:scale(1.08) rotate(-3deg);}
+  .mascot .m-name{font-family:var(--font-display); font-weight:700; font-size:14.5px; font-style:italic;}
+  .mascot .m-name span{font-style:normal; font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--brass); display:block; font-weight:700; margin-bottom:2px;}
+  .mascot .m-blurb{font-size:12.5px; color:var(--ink-soft); margin-top:3px; line-height:1.45;}
+  @media (prefers-reduced-motion: reduce){ .mascot .dino-ico{transition:none;} }
+
+  /* ===== Circus card (family lore) ===== */
+  .circus-card{border:3px double var(--brass); border-radius:8px; padding:28px 30px; background:var(--paper-raised); text-align:center;}
+  .circus-card .cc-eyebrow{font-family:var(--font-mono); letter-spacing:.16em; font-size:10.5px; color:var(--ink-soft); text-transform:uppercase;}
+  .circus-card .cc-name{font-family:var(--font-display); font-weight:700; font-size:clamp(26px,4.4vw,38px); color:var(--brass-strong); letter-spacing:.02em; margin:8px 0 4px; text-wrap:balance;}
+  .circus-card .cc-sub{font-family:var(--font-display); font-style:italic; font-size:14.5px; color:var(--ink-soft); margin-bottom:18px;}
+  .circus-card .cc-body{font-size:14px; color:var(--ink); max-width:60ch; margin:0 auto; text-align:left; line-height:1.65;}
+  .circus-card .cc-cite{margin-top:16px; font-family:var(--font-mono); font-size:10.5px; color:var(--ink-soft); text-align:left; max-width:60ch; margin-left:auto; margin-right:auto;}
   .page{max-width:920px;margin:0 auto;padding:0 20px 80px;}
   a{color:inherit;}
 
@@ -372,6 +390,29 @@
     '</svg>';
   function footIcon(){ return '<span class="foot-ico">'+FOOT_SVG+'</span>'; }
 
+  var DINO_SVG = '<svg viewBox="0 0 100 60" fill="currentColor" aria-hidden="true">'+
+    '<path d="M22 34 Q4 40 8 52 Q17 47 25 40 Z"/>'+
+    '<ellipse cx="45" cy="38" rx="26" ry="15"/>'+
+    '<rect x="60" y="18" width="14" height="16" rx="7" transform="rotate(-25 67 26)"/>'+
+    '<ellipse cx="82" cy="20" rx="9" ry="8"/>'+
+    '<polygon points="38,25 44,13 49,27"/>'+
+    '<polygon points="49,24 55,12 60,26"/>'+
+    '<rect x="30" y="48" width="8" height="12" rx="3"/>'+
+    '<rect x="52" y="48" width="8" height="12" rx="3"/>'+
+    '</svg>';
+  function dinoIcon(){ return '<span class="dino-ico">'+DINO_SVG+'</span>'; }
+
+  var MASCOTS = {
+    ops:{species:'Ankylosaurus', blurb:'Armored and immovable — built to keep the whole operation standing no matter what hits it.'},
+    care:{species:'Maiasaura', blurb:'The name literally means “good mother lizard” — famous for nesting in colonies and raising her hatchlings with real care.'},
+    train:{species:'Troodon', blurb:'Widely considered the smartest dinosaur going, with the largest brain-to-body ratio of the bunch.'},
+    build:{species:'Deinonychus', blurb:'Fast, sharp-clawed, and built to execute — the velociraptor’s bigger, smarter cousin.'},
+    mkt:{species:'Parasaurolophus', blurb:'Grew a hollow head crest that worked like a built-in trombone, broadcasting calls for miles.'},
+    crisis:{species:'Tyrannosaurus rex', blurb:'The one you call when it’s serious — apex responder, handled the biggest problems in the room.'},
+    retail:{species:'Triceratops', blurb:'Held the front line of the herd, unbothered, facing every threat head-on.'},
+    clean:{species:'Stegosaurus', blurb:'Armor-plated and meticulous — even 150 million years ago, upkeep mattered.'}
+  };
+
   function has(tags, key){ return tags.indexOf(key) !== -1; }
   function pick(arr, key){ return arr.filter(function(x){ return has(x.tags, key); }); }
 
@@ -531,13 +572,23 @@
         '<div class="name-row"><div><h1>Shiann Bowman</h1>'+
         '<div class="class-title">Operations builder — trained in caregiving, crisis response, and process design</div></div>'+
         '<div class="field-stamp"><b>11</b>yrs in&nbsp;field</div></div>'+
-        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). I also run a reptile rescue, so digging up old bones is basically the family business. This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>'+
+        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). I also run a reptile rescue — turns out that\'s not even new to the family (more on that below). This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>'+
         '<div class="contact-line"><span>Yuma, AZ</span><a href="tel:9289163711">928-916-3711</a><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></div>'+
       '</header>'+
       '<section id="paths">'+
         '<div class="section-head"><span class="tag">Basecamp</span><h2>Choose a dig site</h2></div>'+
         '<p class="lede">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>'+
         '<div class="hub-tiles" id="hubTiles"></div>'+
+      '</section>'+
+      '<section id="lore">'+
+        '<div class="section-head"><span class="tag">Family lore</span><h2>Meet Princess Naldu</h2></div>'+
+        '<div class="circus-card">'+
+          '<div class="cc-eyebrow">True family history &middot; circa 1920s</div>'+
+          '<div class="cc-name">Princess Naldu</div>'+
+          '<div class="cc-sub">Agnes E. Sukowaty Morris (1895&ndash;1965) &middot; Snake Charmer, Barnum &amp; Bailey Circus</div>'+
+          '<div class="cc-body">Long before I ever ran a reptile rescue, my great-aunt Agnes was touring the country with Barnum &amp; Bailey &mdash; billed as Princess Naldu, snake charmer, sharing a sideshow bill with J.G. Tarver (the tallest man) and Princess Wee-Wee (the littlest person). Her husband at the time worked the show as a barker, selling tickets to see them. She crisscrossed nearly the entire United States for it. I didn\'t know any of this when I started rescuing snakes and reptiles of my own &mdash; apparently it skipped a couple generations and came right back.</div>'+
+          '<div class="cc-cite">Family history, verified via Find A Grave &middot; memorial #98838984, Saint Gregory Cemetery, Saint Nazianz, WI.</div>'+
+        '</div>'+
       '</section>'+
       '<section class="close">'+
         '<h2>Not sure which one?</h2>'+
@@ -575,6 +626,10 @@
     var idx = LENS_ORDER.indexOf(id);
     var nextL = LENSES[LENS_ORDER[(idx+1)%LENS_ORDER.length]];
     var prevL = LENSES[LENS_ORDER[(idx-1+LENS_ORDER.length)%LENS_ORDER.length]];
+    var mascot = MASCOTS[id];
+    var mascotHtml = mascot ? '<div class="mascot">'+dinoIcon()+
+      '<div><div class="m-name"><span>Dig-site mascot</span>'+mascot.species+'</div>'+
+      '<div class="m-blurb">'+mascot.blurb+'</div></div></div>' : '';
 
     var app = document.getElementById('app');
     app.innerHTML =
@@ -583,6 +638,7 @@
         '<h1>'+L.headline+'</h1>'+
         '<p class="dek">'+L.dek+'</p>'+
         '<div class="kbd-hint"><kbd>&larr;</kbd> '+prevL.label+' &nbsp;·&nbsp; '+nextL.label+' <kbd>&rarr;</kbd></div>'+
+        mascotHtml+
       '</div>'+
       (L.flagship ? '<section>'+caseStudyHtml(L.flagship)+'</section>' : '')+
       '<section><div class="section-head"><span class="tag">Vitals</span><h2>Working stats</h2></div>'+
