@@ -1,38 +1,38 @@
-<title>Shiann Bowman — Field Record</title>
+<title>Shiann Bowman — Field Record: A Career Excavation</title>
 <style>
   :root{
-    --paper:#f2ece0;
-    --paper-raised:#faf6ec;
-    --ink:#211f1a;
-    --ink-soft:#544d3f;
-    --rule:#d3c6a8;
-    --rule-strong:#b7a780;
-    --brass:#9c6b2e;
-    --brass-strong:#7c541f;
+    --paper:#ece0c4;
+    --paper-raised:#f5ecd6;
+    --ink:#2c2118;
+    --ink-soft:#5c4d3a;
+    --rule:#d8c49a;
+    --rule-strong:#b99a63;
+    --brass:#b5651d;
+    --brass-strong:#8f4d14;
     --moss:#3f6a52;
     --moss-soft:#7fa88c15;
     --danger:#8c3d2e;
-    --shadow: 2px 2px 0 rgba(33,31,26,0.08);
-    --font-display: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --shadow: 2px 2px 0 rgba(44,33,24,0.1);
+    --font-display: "Rockwell Nova","Rockwell","Roboto Slab",Georgia,serif;
     --font-body: Seravek,"Gill Sans Nova","Segoe UI",Calibri,sans-serif;
     --font-mono: "Berkeley Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --paper:#1b1a16; --paper-raised:#242219; --ink:#ece4d3; --ink-soft:#b8ae97;
-      --rule:#3c3829; --rule-strong:#4f4a36; --brass:#c99a51; --brass-strong:#e0b571;
+      --paper:#1c1712; --paper-raised:#26201a; --ink:#ecdfc4; --ink-soft:#b8a37e;
+      --rule:#3a2f22; --rule-strong:#4d3f2c; --brass:#d68a3c; --brass-strong:#e8a25a;
       --moss:#7fa88c; --moss-soft:#7fa88c22; --danger:#c07862; --shadow: 2px 2px 0 rgba(0,0,0,0.35);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#1b1a16; --paper-raised:#242219; --ink:#ece4d3; --ink-soft:#b8ae97;
-    --rule:#3c3829; --rule-strong:#4f4a36; --brass:#c99a51; --brass-strong:#e0b571;
+    --paper:#1c1712; --paper-raised:#26201a; --ink:#ecdfc4; --ink-soft:#b8a37e;
+    --rule:#3a2f22; --rule-strong:#4d3f2c; --brass:#d68a3c; --brass-strong:#e8a25a;
     --moss:#7fa88c; --moss-soft:#7fa88c22; --danger:#c07862; --shadow: 2px 2px 0 rgba(0,0,0,0.35);
   }
   :root[data-theme="light"]{
-    --paper:#f2ece0; --paper-raised:#faf6ec; --ink:#211f1a; --ink-soft:#544d3f;
-    --rule:#d3c6a8; --rule-strong:#b7a780; --brass:#9c6b2e; --brass-strong:#7c541f;
-    --moss:#3f6a52; --moss-soft:#7fa88c15; --danger:#8c3d2e; --shadow: 2px 2px 0 rgba(33,31,26,0.08);
+    --paper:#ece0c4; --paper-raised:#f5ecd6; --ink:#2c2118; --ink-soft:#5c4d3a;
+    --rule:#d8c49a; --rule-strong:#b99a63; --brass:#b5651d; --brass-strong:#8f4d14;
+    --moss:#3f6a52; --moss-soft:#7fa88c15; --danger:#8c3d2e; --shadow: 2px 2px 0 rgba(44,33,24,0.1);
   }
 
   *{box-sizing:border-box;}
@@ -40,9 +40,13 @@
   body{
     margin:0; background:var(--paper); color:var(--ink);
     font-family:var(--font-body); line-height:1.55;
-    background-image:repeating-linear-gradient(transparent, transparent 27px, var(--rule) 28px);
+    background-image:
+      repeating-linear-gradient(transparent, transparent 27px, var(--rule) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, var(--rule) 28px);
     background-attachment:local;
   }
+  .foot-ico{display:inline-flex; align-items:center; justify-content:center; color:var(--rule-strong); flex-shrink:0;}
+  .foot-ico svg{display:block; width:1em; height:1em;}
   .page{max-width:920px;margin:0 auto;padding:0 20px 80px;}
   a{color:inherit;}
 
@@ -67,7 +71,7 @@
   .masthead{padding:36px 0 28px; border-bottom:3px double var(--rule-strong);}
   .kicker{
     font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--brass); margin:0 0 14px;
+    color:var(--brass); margin:0 0 14px; display:flex; align-items:center; gap:7px;
   }
   .name-row{display:flex; flex-wrap:wrap; align-items:baseline; gap:18px; justify-content:space-between;}
   h1{
@@ -115,7 +119,8 @@
   }
   .hub-tile .t-label{font-family:var(--font-display); font-weight:700; font-size:17px; margin-bottom:4px;}
   .hub-tile .t-sub{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
-  .hub-tile .t-go{font-family:var(--font-mono); font-size:11px; color:var(--brass); font-weight:600;}
+  .hub-tile .t-go{font-family:var(--font-mono); font-size:11px; color:var(--brass); font-weight:600; display:flex; align-items:center; gap:5px;}
+  .hub-tile .t-go .foot-ico{color:var(--brass);}
 
   /* ===== Lens hero ===== */
   .lens-hero{padding:30px 0 8px;}
@@ -209,7 +214,7 @@
   .trail-pip.visited{border-color:var(--moss); color:var(--moss);}
   .trail-pip.current{background:var(--brass); border-color:var(--brass); color:#fff;}
   .trail-pip.home{color:var(--brass); font-size:13px; padding:5px 10px;}
-  .trail-sep{flex-shrink:0; width:10px; height:1px; background:var(--rule-strong);}
+  .trail-sep{flex-shrink:0; width:13px; height:13px; color:var(--rule-strong); display:inline-flex; opacity:.8;}
   .trail-progress{
     margin-left:auto; flex-shrink:0; font-family:var(--font-mono); font-size:10px; color:var(--ink-soft);
     white-space:nowrap; padding-left:8px;
@@ -238,7 +243,8 @@
 
   /* ===== Flagship case study ===== */
   .case-study{border:1.5px solid var(--brass); border-radius:10px; padding:24px 26px; background:var(--paper-raised);}
-  .case-study .cs-title{font-family:var(--font-display); font-weight:700; font-size:19px; margin-bottom:14px;}
+  .case-study .cs-title{font-family:var(--font-display); font-weight:700; font-size:19px; margin-bottom:14px; display:flex; align-items:center; gap:9px;}
+  .case-study .cs-title .foot-ico{color:var(--brass); width:18px; height:18px;}
   .cs-row{display:grid; grid-template-columns:100px 1fr; gap:16px; margin-bottom:12px;}
   @media (max-width:560px){.cs-row{grid-template-columns:1fr; gap:4px;}}
   .cs-row .cs-label{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--brass); padding-top:2px;}
@@ -357,6 +363,14 @@
       {q:'I needed a booking app for my salon and got quoted $8,000 by an agency. I got exactly what I needed for a fraction of that… my no-show rate dropped immediately.', who:'L. Castillo — Salon Owner'}
     ]
   };
+
+  var FOOT_SVG = '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">'+
+    '<ellipse cx="16" cy="23" rx="6.4" ry="5.2"/>'+
+    '<ellipse cx="8.5" cy="14.5" rx="3" ry="6.6" transform="rotate(-22 8.5 14.5)"/>'+
+    '<ellipse cx="16" cy="10.5" rx="3.1" ry="7.4"/>'+
+    '<ellipse cx="23.5" cy="14.5" rx="3" ry="6.6" transform="rotate(22 23.5 14.5)"/>'+
+    '</svg>';
+  function footIcon(){ return '<span class="foot-ico">'+FOOT_SVG+'</span>'; }
 
   function has(tags, key){ return tags.indexOf(key) !== -1; }
   function pick(arr, key){ return arr.filter(function(x){ return has(x.tags, key); }); }
@@ -491,10 +505,10 @@
 
   function caseStudyHtml(cs){
     if(!cs) return '';
-    return '<div class="case-study"><div class="cs-title">'+cs.title+'</div>'+
-      '<div class="cs-row"><div class="cs-label">Problem</div><div class="cs-text">'+cs.problem+'</div></div>'+
-      '<div class="cs-row"><div class="cs-label">Approach</div><div class="cs-text">'+cs.approach+'</div></div>'+
-      '<div class="cs-row"><div class="cs-label">Result</div><div class="cs-text">'+cs.result+'</div></div>'+
+    return '<div class="case-study"><div class="cs-title">'+footIcon()+' '+cs.title+'</div>'+
+      '<div class="cs-row"><div class="cs-label">The site</div><div class="cs-text">'+cs.problem+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">The dig</div><div class="cs-text">'+cs.approach+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">The find</div><div class="cs-text">'+cs.result+'</div></div>'+
       '<div class="cs-stats">'+cs.stats.map(function(s){return '<div class="cs-stat"><div class="cs-k">'+s.k+'</div><div class="cs-v">'+s.v+'</div></div>';}).join('')+'</div>'+
       '</div>';
   }
@@ -513,16 +527,16 @@
     var app = document.getElementById('app');
     app.innerHTML =
       '<header class="masthead">'+
-        '<p class="kicker">Field Record · Operations, Care &amp; Systems</p>'+
+        '<p class="kicker">'+footIcon()+' Field Record · A Career Excavation</p>'+
         '<div class="name-row"><div><h1>Shiann Bowman</h1>'+
         '<div class="class-title">Operations builder — trained in caregiving, crisis response, and process design</div></div>'+
         '<div class="field-stamp"><b>11</b>yrs in&nbsp;field</div></div>'+
-        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). This page is organized like a field guide: pick the path that matches what brought you here, and it opens into its own dedicated record.</p>'+
+        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). I also run a reptile rescue, so digging up old bones is basically the family business. This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>'+
         '<div class="contact-line"><span>Yuma, AZ</span><a href="tel:9289163711">928-916-3711</a><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></div>'+
       '</header>'+
       '<section id="paths">'+
-        '<div class="section-head"><span class="tag">Start here</span><h2>Choose a path</h2></div>'+
-        '<p class="lede">Each path is a full, dedicated page — its own stats, record, and next step. Nothing here is a subset of something else.</p>'+
+        '<div class="section-head"><span class="tag">Basecamp</span><h2>Choose a dig site</h2></div>'+
+        '<p class="lede">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>'+
         '<div class="hub-tiles" id="hubTiles"></div>'+
       '</section>'+
       '<section class="close">'+
@@ -540,7 +554,7 @@
       a.innerHTML = '<div class="glyph">'+L.glyph+'</div>'+
         '<div class="t-label">'+L.label+'</div>'+
         '<div class="t-sub">'+L.sub+'</div>'+
-        '<div class="t-go">Open path →</div>';
+        '<div class="t-go">'+footIcon()+' Start the dig →</div>';
       tiles.appendChild(a);
     });
   }
@@ -571,16 +585,16 @@
         '<div class="kbd-hint"><kbd>&larr;</kbd> '+prevL.label+' &nbsp;·&nbsp; '+nextL.label+' <kbd>&rarr;</kbd></div>'+
       '</div>'+
       (L.flagship ? '<section>'+caseStudyHtml(L.flagship)+'</section>' : '')+
-      '<section><div class="section-head"><span class="tag">Stats</span><h2>Working stats</h2></div>'+
+      '<section><div class="section-head"><span class="tag">Vitals</span><h2>Working stats</h2></div>'+
         statBlockHtml(L.stats) + '</section>'+
-      '<section><div class="section-head"><span class="tag">Record</span><h2>Relevant service record</h2></div>'+
+      '<section><div class="section-head"><span class="tag">Dig log</span><h2>Relevant service record</h2></div>'+
         ledgerHtml(entries) + '</section>'+
-      (builds.length ? '<section><div class="section-head"><span class="tag">Proof</span><h2>Shipped, not just proposed</h2></div>' + buildsHtml(builds) + '</section>' : '')+
-      (t ? '<section><div class="section-head"><span class="tag">Word for word</span><h2>What clients say</h2></div>'+
+      (builds.length ? '<section><div class="section-head"><span class="tag">Recovered artifacts</span><h2>Shipped, not just proposed</h2></div>' + buildsHtml(builds) + '</section>' : '')+
+      (t ? '<section><div class="section-head"><span class="tag">Field notes</span><h2>What clients say</h2></div>'+
         '<div style="display:flex;flex-direction:column;gap:14px;">'+tHtml+'</div></section>' : '')+
-      (badges.length ? '<section><div class="section-head"><span class="tag">Credentials</span><h2>Credentials &amp; milestones</h2></div>' + badgesHtml(badges) + '</section>' : '')+
+      (badges.length ? '<section><div class="section-head"><span class="tag">Fossil record</span><h2>Credentials &amp; milestones</h2></div>' + badgesHtml(badges) + '</section>' : '')+
       '<section class="close" style="text-align:left;">'+
-        '<div class="section-head"><span class="tag">Next step</span><h2>Take this further</h2></div>'+
+        '<div class="section-head"><span class="tag">Next expedition</span><h2>Take this further</h2></div>'+
         '<div class="cta-row">'+
           '<a class="btn brass" '+(L.ctaPrimary.href.indexOf("http")===0 ? 'target="_blank" rel="noopener"' : '')+' href="'+L.ctaPrimary.href+'">'+L.ctaPrimary.label+'</a>'+
           '<a class="btn ghost" href="'+L.ctaSecondary.href+'">'+L.ctaSecondary.label+'</a>'+
@@ -592,21 +606,22 @@
   function renderTrail(currentId){
     var trail = document.getElementById('trail');
     var visited = getVisited();
-    var html = '<a class="trail-pip home'+(!currentId ? ' current' : '')+'" href="#">&#9670; Hub</a><span class="trail-sep"></span>';
+    var sep = '<span class="trail-sep">'+footIcon()+'</span>';
+    var html = '<a class="trail-pip home'+(!currentId ? ' current' : '')+'" href="#">&#9670; Basecamp</a>'+sep;
     html += LENS_ORDER.map(function(id){
       var cls = 'trail-pip';
       if(id === currentId) cls += ' current';
       else if(visited.indexOf(id) !== -1) cls += ' visited';
       return '<a class="'+cls+'" href="#'+id+'" title="'+LENSES[id].label+'">'+CODES[id]+'</a>';
-    }).join('<span class="trail-sep"></span>');
-    html += '<span class="trail-progress">'+visited.length+' / '+LENS_ORDER.length+' paths viewed</span>';
+    }).join(sep);
+    html += '<span class="trail-progress">'+visited.length+' / '+LENS_ORDER.length+' sites excavated</span>';
     trail.innerHTML = html;
   }
 
   function showToast(id){
     var L = LENSES[id];
     var t = document.getElementById('toast');
-    t.innerHTML = '<b>Path opened</b>'+L.label;
+    t.innerHTML = '<b>Dig site uncovered</b>'+L.label;
     t.classList.add('show');
     clearTimeout(t._timer);
     t._timer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
