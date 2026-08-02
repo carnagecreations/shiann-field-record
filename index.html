@@ -320,11 +320,11 @@
 
   var LEDGER_ALL = [
     {dates:'2024 — Present', title:'Founder', org:'Avoria — web design & custom apps (hand-coded, pay after approval)',
-     desc:'Independent web design studio — 50+ clients, 5.0 average rating, zero refund requests ever. One flat price per project, $0/month hosting, and no invoice until the client approves a working draft.',
-     tags:['build','mkt']},
-    {dates:'2024 — Present', title:'Founder', org:'Venom Vision Designs — senior/veteran care & home cleaning (Yuma & Foothills, AZ)',
-     desc:'Independent care and cleaning practice — no long-term contracts on care, a free-reclean guarantee on cleaning, and the same personal, no-corners-cut standard on both. Handle every client intake, quote, and booking myself — the front-of-house side of the business, not just the labor.',
-     tags:['care','clean','mkt','ops','retail']},
+     desc:'Independent web design studio — 50+ clients, 5.0 average rating, zero refund requests ever. One flat price per project, $0/month hosting, and no invoice until the client approves a working draft. Handle every client intake and quote myself.',
+     tags:['build','mkt','retail']},
+    {dates:'2024 — Present', title:'Founder', org:'Clean Convictions — house cleaning (Yuma, AZ)',
+     desc:'Independent cleaning business — published flat-rate pricing, a 24-hour re-clean guarantee, and service for homes, offices, and move-in/move-out jobs. Handle every client quote, schedule, and on-site clean personally.',
+     tags:['clean','ops','mkt','retail']},
     {dates:'2021 — Present', title:'Founder & COO', org:'Beauties of the Beasts Animal Rescue, Inc. (501c3)',
      desc:'Own daily operations, staffing, and scheduling for a licensed reptile & exotics rescue. Write grant materials that fund programs, run the org’s marketing and fundraising, and built the internal training system volunteers work from.',
      tags:['ops','mkt','train']},
@@ -370,9 +370,9 @@
     {flag:'Case study · performance rebuild, Lighthouse 52→97', title:'Beauties of the Beasts', tags:['build','mkt','ops'],
      desc:'Designed and built the public site for my own 501(c)(3) reptile rescue, then rebuilt it for performance — Lighthouse score 52 to 97, load time 6.2s to 1.4s. Adoption listings, surrender intake, and donation flows.',
      links:[['Visit site','https://yumareptiles.com']]},
-    {flag:'Senior/veteran care & cleaning', title:'Venom Vision Designs', tags:['care','clean','mkt'],
-     desc:'Booking site for senior/veteran companion care and home cleaning — service-specific quote forms, testimonials, and pricing. (Web design has since moved to Avoria; this brand now covers care and cleaning.)',
-     links:[['Visit site','https://venomvision.pages.dev']]},
+    {flag:'Active business · flat-rate & guaranteed', title:'Clean Convictions', tags:['clean','build','mkt'],
+     desc:'My current cleaning business site — a live flat-rate estimate engine that computes a real quote from square footage, rooms, frequency, and add-ons, right on the page, plus a 24-hour re-clean guarantee.',
+     links:[['Visit Clean Convictions','https://cleanconvictions.com']]},
     {flag:'Live web app', title:'Caregiver Assignment & Call-Out Auto-Match', tags:['build','ops','care','retail'],
      desc:'Built after noticing a real operational gap — caregivers hired but never matched to a client. Tracks unassigned caregivers, ranks the best replacement during a call-out, and calculates the real cost of unassigned hours. Available on request.',
      links:[]},
@@ -382,8 +382,8 @@
   ];
 
   var BADGES_ALL = [
-    {seal:'50+', label:'Clients served, zero refunds', sub:'Venom Vision Designs', tags:['build','care','clean','mkt','retail']},
-    {seal:'5.0★', label:'Average client rating', sub:'Google reviews', tags:['build','care','clean','retail']},
+    {seal:'50+', label:'Clients served, zero refunds', sub:'Avoria', tags:['build']},
+    {seal:'5.0★', label:'Average client rating', sub:'Avoria, Google reviews', tags:['build']},
     {seal:'BBA', label:'Bachelor of Business Administration', sub:'Newbury University', tags:['ops','mkt','train','retail']},
     {seal:'CPR', label:'CPR & First Aid Certified', sub:'', tags:['care','crisis','clean','retail']},
     {seal:'FP', label:'Fingerprint Clearance Card', sub:'State & federal background check', tags:['care','clean']},
@@ -398,7 +398,6 @@
 
   var TESTIMONIALS = {
     care: [{q:'Shiann treated my father with so much respect it brought me to tears. He’s dealt with caregivers for years and never once lit up — until her. She doesn’t just show up. She genuinely cares about him as a person.', who:'Maria R. — Senior & Veteran Care client'}],
-    clean: [{q:'I’ve hired three different cleaning services over the years. Shiann is the only one I’ve ever called back. My bathroom looked better than the day I moved in — and she found grout I forgot I had.', who:'James T. — Home Cleaning client'}],
     build: [
       {q:'I’d been putting off a website for two years because of the price… now I have something better than anything my competitors have. No subscription. No platform. Done.', who:'T. Nguyen — Service Business Owner'},
       {q:'I needed a booking app for my salon and got quoted $8,000 by an agency. I got exactly what I needed for a fraction of that… my no-show rate dropped immediately.', who:'L. Castillo — Salon Owner'}
@@ -461,12 +460,12 @@
     care: {
       label:'Healthcare & Caregiving', glyph:'C', sub:'senior, veteran & special-needs care',
       kicker:'Lens · Healthcare & Caregiving', headline:'Senior, Veteran & Special-Needs Care',
-      dek:'5+ years of direct client care for veterans, seniors, and clients with autism and cerebral palsy — plus the operational eye to fix the system around the care. Currently taking new senior & veteran care clients in Yuma & Foothills, AZ through Venom Vision Designs.',
+      dek:'5+ years of direct client care for veterans, seniors, and clients with autism and cerebral palsy — plus the operational eye to fix the system around the care.',
       stats:[{name:'Direct Client Care',pct:95},{name:'Care Plan Documentation',pct:90},{name:'Crisis Composure',pct:85},{name:'Family & Provider Communication',pct:88}],
       testimonial:'care',
-      ctaPrimary:{label:'Book a free consult →',href:'https://venomvision.pages.dev'},
-      ctaSecondary:{label:'Email me about a caregiving role',href:'mailto:bowman.shiann@gmail.com'},
-      ctaNote:'Hiring for a caregiving position? Email me directly. Need care for a family member? Book a free, no-commitment consult.'
+      ctaPrimary:{label:'Email me about a caregiving role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Currently a caregiver with Cornerstone Caregiving and available for additional direct-care clients — reach out directly to talk specifics.'
     },
     train: {
       label:'Training & Documentation', glyph:'T', sub:'SOPs, onboarding, job aids',
@@ -524,12 +523,11 @@
     clean: {
       label:'Home Cleaning', glyph:'H', sub:'deep, standard & move-out',
       kicker:'Lens · Home Cleaning', headline:'Home Cleaning',
-      dek:'Deep, standard, and move-out cleaning with a commercial steamer — from $80, with a simple guarantee: if anything’s missed, I come back free. Currently taking new clients in Yuma & Foothills, AZ through Venom Vision Designs.',
+      dek:'Flat-rate house cleaning through Clean Convictions — regular cleaning from $89, deep cleans from $179, move-in/move-out from $199, plus office & commercial service. Published pricing, pet-safe products, a military/veteran discount, and a simple guarantee: miss a spot, tell us within 24 hours, and we re-clean it free.',
       stats:[{name:'Attention to Detail',pct:95},{name:'Reliability & Consistency',pct:96},{name:'Client Trust & Retention',pct:92},{name:'Efficiency & Time Management',pct:85}],
-      testimonial:'clean',
-      ctaPrimary:{label:'Get a cleaning quote →',href:'https://venomvision.pages.dev'},
-      ctaSecondary:{label:'Text 928-916-3711',href:'tel:9289163711'},
-      ctaNote:'Free reclean if anything’s missed — every time, no questions asked.'
+      ctaPrimary:{label:'Get a flat-rate quote →',href:'https://cleanconvictions.com'},
+      ctaSecondary:{label:'Call/text 928-298-5509',href:'tel:9282985509'},
+      ctaNote:'Free flat-rate quote in about 60 seconds online — instant pricing, no sales call, no waiting.'
     }
   };
 
@@ -607,7 +605,7 @@
         '<div><h1>Shiann Bowman</h1>'+
         '<div class="class-title">Operations builder — trained in caregiving, crisis response, and process design</div></div>'+
         '<div class="field-stamp"><b>11</b>yrs in&nbsp;field</div></div>'+
-        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). I also run a reptile rescue — turns out that\'s not even new to the family (more on that below). This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>'+
+        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Clean Convictions (house cleaning). I also run a reptile rescue — turns out that\'s not even new to the family (more on that below). This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>'+
         '<div class="contact-line"><span>Yuma, AZ</span><a href="tel:9289163711">928-916-3711</a><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></div>'+
       '</header>'+
       '<section id="paths">'+
