@@ -445,6 +445,15 @@
       kicker:'Lens · Operations & Admin', headline:'Operations & Admin',
       dek:'COO-level ownership of scheduling, staffing, and process — the person who builds the system so nothing falls through the cracks, then documents it so it survives after she leaves the room.',
       stats:[{name:'Operations Leadership',pct:90},{name:'Documentation & SOPs',pct:95},{name:'Process Design',pct:88},{name:'Vendor & Stakeholder Coordination',pct:80}],
+      flagship:{
+        title:'Beauties of the Beasts — where it’s headed',
+        labels:['Right now','Next chapter','Why it matters'],
+        problem:'Two programs today — reptile rescue and Bunch a Bull, a breed-specific bulldog program — running out of a home in Yuma. Scope has stayed narrow on purpose, but a home has a ceiling, and we’ve been up against it for a while.',
+        approach:'Working to secure a dedicated facility — more intake capacity, real quarantine space at scale, and the room to say yes to species and situations we currently have to turn away. Not promised on a timeline, but it’s the single biggest thing standing between where we are and where we want to be.',
+        result:'When Yuma recently lost part of its capacity for cats as a local shelter closed its cat program, that’s exactly the kind of gap a facility lets us respond to. Behind it: general dog & cat intake, expanded reptile capacity, a larger bulldog program, community education, veterans support, a special needs program, safe haven fostering for domestic violence survivors, animal-assisted therapy, and a low-cost vet clinic.',
+        stats:[{k:'2',v:'programs today'},{k:'9',v:'programs planned'},{k:'2023',v:'rescue founded'},{k:'1',v:'facility away'}],
+        link:{label:'Read the full vision', href:'https://yumareptiles.com/vision/'}
+      },
       ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
       ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
       ctaNote:'Open to operations, scheduling, and admin roles where building the right process matters.'
@@ -569,11 +578,13 @@
 
   function caseStudyHtml(cs){
     if(!cs) return '';
+    var labels = cs.labels || ['The site','The dig','The find'];
     return '<div class="case-study"><div class="cs-title">'+footIcon()+' '+cs.title+'</div>'+
-      '<div class="cs-row"><div class="cs-label">The site</div><div class="cs-text">'+cs.problem+'</div></div>'+
-      '<div class="cs-row"><div class="cs-label">The dig</div><div class="cs-text">'+cs.approach+'</div></div>'+
-      '<div class="cs-row"><div class="cs-label">The find</div><div class="cs-text">'+cs.result+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">'+labels[0]+'</div><div class="cs-text">'+cs.problem+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">'+labels[1]+'</div><div class="cs-text">'+cs.approach+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">'+labels[2]+'</div><div class="cs-text">'+cs.result+'</div></div>'+
       '<div class="cs-stats">'+cs.stats.map(function(s){return '<div class="cs-stat"><div class="cs-k">'+s.k+'</div><div class="cs-v">'+s.v+'</div></div>';}).join('')+'</div>'+
+      (cs.link ? '<div style="margin-top:16px;"><a class="build-links" style="font-family:var(--font-mono);font-size:11.5px;font-weight:600;color:var(--brass);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:1px;" href="'+cs.link.href+'" target="_blank" rel="noopener">'+cs.link.label+' &rarr;</a></div>' : '')+
       '</div>';
   }
 
