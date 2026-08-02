@@ -1,0 +1,674 @@
+<title>Shiann Bowman — Field Record</title>
+<style>
+  :root{
+    --paper:#f2ece0;
+    --paper-raised:#faf6ec;
+    --ink:#211f1a;
+    --ink-soft:#544d3f;
+    --rule:#d3c6a8;
+    --rule-strong:#b7a780;
+    --brass:#9c6b2e;
+    --brass-strong:#7c541f;
+    --moss:#3f6a52;
+    --moss-soft:#7fa88c15;
+    --danger:#8c3d2e;
+    --shadow: 2px 2px 0 rgba(33,31,26,0.08);
+    --font-display: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --font-body: Seravek,"Gill Sans Nova","Segoe UI",Calibri,sans-serif;
+    --font-mono: "Berkeley Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#1b1a16; --paper-raised:#242219; --ink:#ece4d3; --ink-soft:#b8ae97;
+      --rule:#3c3829; --rule-strong:#4f4a36; --brass:#c99a51; --brass-strong:#e0b571;
+      --moss:#7fa88c; --moss-soft:#7fa88c22; --danger:#c07862; --shadow: 2px 2px 0 rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1b1a16; --paper-raised:#242219; --ink:#ece4d3; --ink-soft:#b8ae97;
+    --rule:#3c3829; --rule-strong:#4f4a36; --brass:#c99a51; --brass-strong:#e0b571;
+    --moss:#7fa88c; --moss-soft:#7fa88c22; --danger:#c07862; --shadow: 2px 2px 0 rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --paper:#f2ece0; --paper-raised:#faf6ec; --ink:#211f1a; --ink-soft:#544d3f;
+    --rule:#d3c6a8; --rule-strong:#b7a780; --brass:#9c6b2e; --brass-strong:#7c541f;
+    --moss:#3f6a52; --moss-soft:#7fa88c15; --danger:#8c3d2e; --shadow: 2px 2px 0 rgba(33,31,26,0.08);
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--paper);}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); line-height:1.55;
+    background-image:repeating-linear-gradient(transparent, transparent 27px, var(--rule) 28px);
+    background-attachment:local;
+  }
+  .page{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+  a{color:inherit;}
+
+  /* ===== Top bar (persistent) ===== */
+  .topbar{
+    max-width:920px;margin:0 auto;padding:16px 20px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand-mini{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); text-decoration:none; display:flex; align-items:center; gap:8px;
+  }
+  .brand-mini b{color:var(--ink); font-weight:700;}
+  .back-link{
+    font-family:var(--font-mono); font-size:11.5px; font-weight:600; text-decoration:none;
+    color:var(--brass); border:1px solid var(--rule-strong); padding:6px 12px; border-radius:16px;
+    display:inline-flex; align-items:center; gap:6px; background:var(--paper-raised);
+  }
+  .back-link:hover{border-color:var(--brass);}
+
+  /* ===== Masthead (hub) ===== */
+  .masthead{padding:36px 0 28px; border-bottom:3px double var(--rule-strong);}
+  .kicker{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brass); margin:0 0 14px;
+  }
+  .name-row{display:flex; flex-wrap:wrap; align-items:baseline; gap:18px; justify-content:space-between;}
+  h1{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(34px,6vw,54px);
+    margin:0; letter-spacing:.01em; text-wrap:balance; color:var(--ink);
+  }
+  .class-title{font-family:var(--font-display); font-style:italic; font-size:17px; color:var(--ink-soft); margin-top:4px;}
+  .field-stamp{
+    font-family:var(--font-mono); font-size:11px; text-align:center; color:var(--brass);
+    border:1px solid var(--rule-strong); border-radius:50%;
+    width:86px; height:86px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    flex-shrink:0; transform:rotate(-6deg); letter-spacing:.04em;
+  }
+  .field-stamp b{font-size:20px; font-family:var(--font-display); color:var(--brass); display:block;}
+  .bio{max-width:66ch; margin:18px 0 0; font-size:15.5px; color:var(--ink-soft);}
+  .contact-line{margin-top:16px; display:flex; flex-wrap:wrap; gap:4px 22px; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-soft);}
+  .contact-line a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule-strong);}
+  .contact-line a:hover{color:var(--brass); border-color:var(--brass);}
+
+  /* ===== Section scaffolding ===== */
+  section{padding:34px 0; border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{display:flex; align-items:baseline; gap:12px; margin-bottom:20px;}
+  .section-head .tag{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; color:var(--brass);
+    text-transform:uppercase; border:1px solid var(--rule-strong); padding:3px 8px; border-radius:3px;
+  }
+  h2{font-family:var(--font-display); font-size:23px; margin:0; color:var(--ink); text-wrap:balance;}
+  .lede{font-size:13.5px; color:var(--ink-soft); max-width:60ch; margin:6px 0 0;}
+
+  /* ===== Hub tiles (quest-select) ===== */
+  .hub-tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px;}
+  .hub-tile{
+    display:block; text-decoration:none; color:inherit;
+    border:1px solid var(--rule-strong); border-radius:8px; padding:20px 20px 18px;
+    background:var(--paper-raised); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    position:relative; overflow:hidden;
+  }
+  .hub-tile:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--brass);}
+  .hub-tile:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+  .hub-tile .glyph{
+    width:40px; height:40px; border-radius:50%; border:1.5px solid var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--brass); margin-bottom:12px;
+  }
+  .hub-tile .t-label{font-family:var(--font-display); font-weight:700; font-size:17px; margin-bottom:4px;}
+  .hub-tile .t-sub{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .hub-tile .t-go{font-family:var(--font-mono); font-size:11px; color:var(--brass); font-weight:600;}
+
+  /* ===== Lens hero ===== */
+  .lens-hero{padding:30px 0 8px;}
+  .lens-hero .kicker{margin-bottom:10px;}
+  .lens-hero h1{font-size:clamp(28px,5.2vw,42px);}
+  .lens-hero .dek{max-width:64ch; font-size:15.5px; color:var(--ink-soft); margin-top:12px;}
+
+  /* ===== Stat block ===== */
+  .stats{display:flex; flex-direction:column; gap:14px;}
+  .stat-row{display:grid; grid-template-columns:190px 1fr 40px; align-items:center; gap:12px;}
+  @media (max-width:560px){.stat-row{grid-template-columns:120px 1fr 34px; gap:8px;}}
+  .stat-name{font-size:12.5px; font-weight:600;}
+  .stat-track{height:9px; background:var(--paper-raised); border:1px solid var(--rule-strong); border-radius:5px; overflow:hidden;}
+  .stat-fill{height:100%; background:linear-gradient(90deg,var(--moss),var(--brass)); width:0; border-radius:5px; animation:fillbar 1s ease-out forwards; animation-delay:.1s;}
+  @media (prefers-reduced-motion: reduce){.stat-fill{animation:none; width:var(--pct);}}
+  @keyframes fillbar{ to { width:var(--pct); } }
+  .stat-num{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); text-align:right; font-variant-numeric:tabular-nums;}
+
+  /* ===== Ledger / timeline ===== */
+  .ledger{border-top:1px solid var(--rule-strong);}
+  .entry{display:grid; grid-template-columns:112px 1fr; gap:18px; padding:16px 0; border-bottom:1px solid var(--rule);}
+  @media (max-width:560px){.entry{grid-template-columns:1fr;}}
+  .entry-dates{font-family:var(--font-mono); font-size:11.5px; color:var(--brass); padding-top:2px;}
+  .entry-title{font-weight:700; font-size:15px;}
+  .entry-org{font-size:12.5px; color:var(--ink-soft); margin:1px 0 6px;}
+  .entry-desc{font-size:13.5px; color:var(--ink-soft); max-width:62ch;}
+
+  /* ===== Build cards ===== */
+  .builds{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:640px){.builds{grid-template-columns:1fr;}}
+  .build-card{border:1px solid var(--rule-strong); border-radius:8px; padding:18px 20px; background:var(--paper-raised); display:flex; flex-direction:column; gap:8px;}
+  .build-flag{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--brass);}
+  .build-title{font-family:var(--font-display); font-weight:700; font-size:16.5px;}
+  .build-desc{font-size:13px; color:var(--ink-soft); flex-grow:1;}
+  .build-links{display:flex; gap:14px; margin-top:6px; flex-wrap:wrap;}
+  .build-links a{font-family:var(--font-mono); font-size:11.5px; font-weight:600; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--brass); padding-bottom:1px;}
+  .build-links a:hover{color:var(--brass);}
+
+  /* ===== Badges ===== */
+  .badges{display:grid; grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:16px;}
+  .badge{display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px;}
+  .badge-seal{
+    width:64px; height:64px; border-radius:50%; border:2px solid var(--brass); position:relative;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--brass);
+    background:radial-gradient(circle at 32% 28%, var(--paper-raised), var(--paper) 70%);
+  }
+  .badge-seal::before{content:""; position:absolute; inset:5px; border:1px dashed var(--rule-strong); border-radius:50%;}
+  .badge-label{font-size:11.5px; font-weight:600; line-height:1.3;}
+  .badge-sub{font-family:var(--font-mono); font-size:10px; color:var(--ink-soft);}
+
+  /* ===== Testimonial ===== */
+  .testimonial{
+    border:1px solid var(--rule-strong); border-radius:8px; padding:22px 24px; background:var(--paper-raised);
+    position:relative;
+  }
+  .testimonial .quote-mark{font-family:var(--font-display); font-size:44px; color:var(--brass); line-height:.4; margin-bottom:6px; display:block;}
+  .testimonial .qtext{font-family:var(--font-display); font-style:italic; font-size:17px; color:var(--ink); text-wrap:balance;}
+  .testimonial .qwho{margin-top:12px; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+
+  /* ===== CTA row ===== */
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:6px;}
+  .btn{
+    font-family:var(--font-mono); font-size:13px; font-weight:600; text-decoration:none;
+    padding:11px 22px; border-radius:24px; border:1.5px solid var(--ink);
+    color:var(--paper); background:var(--ink); transition:transform .15s ease; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--rule-strong);}
+  .btn.brass{background:var(--brass); border-color:var(--brass); color:#fff;}
+  .cta-note{font-size:12px; color:var(--ink-soft); margin-top:10px;}
+
+  .close{padding:40px 0 10px; text-align:center;}
+  .close h2{font-size:26px;}
+  .close p{color:var(--ink-soft); font-size:14px; max-width:46ch; margin:10px auto 22px;}
+  .close-actions{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+
+  /* ===== HUD (sticky topbar + trail) ===== */
+  .hud{position:sticky; top:0; z-index:30; background:var(--paper); border-bottom:1px solid var(--rule);}
+  .trail{
+    max-width:920px; margin:0 auto; padding:10px 20px 12px; display:flex; align-items:center; gap:6px;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .trail::-webkit-scrollbar{display:none;}
+  .trail-pip{
+    flex-shrink:0; font-family:var(--font-mono); font-size:10px; font-weight:700; letter-spacing:.04em;
+    text-decoration:none; color:var(--ink-soft); border:1px solid var(--rule-strong); border-radius:5px;
+    padding:5px 9px; background:var(--paper-raised); transition:all .15s ease; position:relative;
+  }
+  .trail-pip:hover{border-color:var(--brass); color:var(--brass);}
+  .trail-pip.visited{border-color:var(--moss); color:var(--moss);}
+  .trail-pip.current{background:var(--brass); border-color:var(--brass); color:#fff;}
+  .trail-pip.home{color:var(--brass); font-size:13px; padding:5px 10px;}
+  .trail-sep{flex-shrink:0; width:10px; height:1px; background:var(--rule-strong);}
+  .trail-progress{
+    margin-left:auto; flex-shrink:0; font-family:var(--font-mono); font-size:10px; color:var(--ink-soft);
+    white-space:nowrap; padding-left:8px;
+  }
+
+  /* ===== Scroll reveal ===== */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in-view{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* ===== Route transition ===== */
+  #app{transition:opacity .16s ease, transform .16s ease;}
+  #app.transit{opacity:0; transform:translateY(6px);}
+  @media (prefers-reduced-motion: reduce){ #app{transition:none;} }
+
+  /* ===== Toast (path unlocked) ===== */
+  .toast{
+    position:fixed; right:18px; bottom:18px; z-index:50; max-width:280px;
+    background:var(--ink); color:var(--paper); border-radius:8px; padding:13px 16px;
+    font-family:var(--font-mono); font-size:12px; line-height:1.5; box-shadow:0 6px 24px rgba(0,0,0,.25);
+    transform:translateY(12px); opacity:0; transition:opacity .3s ease, transform .3s ease;
+  }
+  .toast.show{opacity:1; transform:translateY(0);}
+  .toast b{color:var(--brass-strong); display:block; font-family:var(--font-display); font-size:13.5px; font-style:italic; margin-bottom:2px;}
+  @media (prefers-reduced-motion: reduce){ .toast{transition:none;} }
+
+  /* ===== Flagship case study ===== */
+  .case-study{border:1.5px solid var(--brass); border-radius:10px; padding:24px 26px; background:var(--paper-raised);}
+  .case-study .cs-title{font-family:var(--font-display); font-weight:700; font-size:19px; margin-bottom:14px;}
+  .cs-row{display:grid; grid-template-columns:100px 1fr; gap:16px; margin-bottom:12px;}
+  @media (max-width:560px){.cs-row{grid-template-columns:1fr; gap:4px;}}
+  .cs-row .cs-label{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--brass); padding-top:2px;}
+  .cs-row .cs-text{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
+  .cs-stats{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; padding-top:16px; border-top:1px dashed var(--rule-strong);}
+  .cs-stat{text-align:center; min-width:74px;}
+  .cs-stat .cs-k{font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--brass);}
+  .cs-stat .cs-v{font-family:var(--font-mono); font-size:9.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em;}
+
+  .kbd-hint{
+    display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; color:var(--ink-soft);
+    margin-top:22px;
+  }
+  .kbd-hint kbd{border:1px solid var(--rule-strong); border-radius:4px; padding:1px 6px; background:var(--paper-raised); font-family:var(--font-mono);}
+
+  ::selection{background:var(--moss-soft); color:var(--ink);}
+</style>
+
+<div class="hud">
+  <div class="topbar">
+    <a class="brand-mini" href="#" onclick="location.hash='';return false;"><b>Shiann Bowman</b> · Field Record</a>
+    <a class="back-link" id="backLink" href="#" style="display:none;">← All paths</a>
+  </div>
+  <nav class="trail" id="trail" aria-label="Path navigator"></nav>
+</div>
+
+<div class="page" id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+
+  var LEDGER_ALL = [
+    {dates:'2024 — Present', title:'Founder', org:'Avoria — web design & custom apps (hand-coded, pay after approval)',
+     desc:'Independent web design studio — 50+ clients, 5.0 average rating, zero refund requests ever. One flat price per project, $0/month hosting, and no invoice until the client approves a working draft.',
+     tags:['build','mkt']},
+    {dates:'2024 — Present', title:'Founder', org:'Venom Vision Designs — senior/veteran care & home cleaning (Yuma & Foothills, AZ)',
+     desc:'Independent care and cleaning practice — no long-term contracts on care, a free-reclean guarantee on cleaning, and the same personal, no-corners-cut standard on both. Handle every client intake, quote, and booking myself — the front-of-house side of the business, not just the labor.',
+     tags:['care','clean','mkt','ops','retail']},
+    {dates:'2021 — Present', title:'Founder & COO', org:'Beauties of the Beasts Animal Rescue, Inc. (501c3)',
+     desc:'Own daily operations, staffing, and scheduling for a licensed reptile & exotics rescue. Write grant materials that fund programs, run the org’s marketing and fundraising, and built the internal training system volunteers work from.',
+     tags:['ops','mkt','train']},
+    {dates:'2023 — Present', title:'Training & Documentation Lead', org:'Beauties of the Beasts, Inc. (Volunteer program)',
+     desc:'Wrote SOPs and reference guides for sanitation, daily workflow, and safety so volunteers can execute correctly with minimal supervision.',
+     tags:['train','ops']},
+    {dates:'2023 — Present', title:'Training & Documentation Lead', org:'Homeward Bound Animal Rescue (Volunteer)',
+     desc:'Built onboarding and training systems for front desk, care, and event volunteers; standardized documentation to reduce errors in a high-need environment.',
+     tags:['train']},
+    {dates:'2020 — 2025', title:'Trainer / Training & Operations Support', org:'Everise (Remote)',
+     desc:'Designed onboarding and upskilling training for new-hire cohorts; built the SOPs, job aids, and quick-reference guides those hires learned from, and tracked trainee progress against readiness benchmarks.',
+     tags:['train','ops']},
+    {dates:'2017 — Present', title:'Legal / Medical Records & Documentation Support', org:'Independent, Project-Based',
+     desc:'Organized and maintained sensitive records with strict attention to confidentiality; built structured templates and workflow documentation to cut rework.',
+     tags:['ops','train','retail']},
+    {dates:'2017 — Present', title:'Caregiver', org:'Cornerstone Caregiving / Freelance',
+     desc:'Direct client care and individualized care plans for veterans, seniors, and clients with autism and cerebral palsy — coordinating directly with healthcare providers and families. Years of one-on-one, in-person service work: reading people, staying patient, and making someone’s day better face to face.',
+     tags:['care','retail']},
+    {dates:'2016 — 2020', title:'Marketing Manager', org:'Freelance',
+     desc:'Ran email, affiliate, and social campaigns across clients; tracked performance data to inform strategy and built brand awareness from the ground up.',
+     tags:['mkt']},
+    {dates:'2014 — 2017', title:'Incident Response Analyst', org:'Uber, Phoenix, AZ',
+     desc:'Handled live emergency calls, coordinating directly with first responders under time pressure, with full compliance documentation on every case. Fast-paced, customer-facing, high-volume — no two calls the same.',
+     tags:['crisis','retail']}
+  ];
+
+  var BUILDS_ALL = [
+    {flag:'Active studio · pay-after-approval', title:'Avoria — Web Design & Custom Apps', tags:['build','mkt'],
+     desc:'My current web design studio. Hand-coded sites and custom apps at one flat price, $0/month hosting — and no invoice exists until the client approves a working draft. 50+ clients, 5.0 rating, zero refunds ever requested.',
+     links:[['Visit Avoria','https://avoria-premium-agency.pages.dev']]},
+    {flag:'Case study · live in 6 days', title:'Montijo', tags:['build','mkt'],
+     desc:'Replaced an $1,800 agency quote with a hand-coded flat-fee build, delivered in 6 days from brief to launch.',
+     links:[]},
+    {flag:'Case study · 95+ Lighthouse', title:'Brennan’s Powerwash', tags:['build','mkt'],
+     desc:'Local Yuma business site with an interactive pricing/estimate tool — 95+ Lighthouse score, generating leads within the first week live.',
+     links:[['Visit site','https://brennansyuma.com']]},
+    {flag:'Client work', title:'Frank & Son Window Tint', tags:['build','mkt'],
+     desc:'Local Yuma business site with a live tint-darkness visualizer tool.',
+     links:[['Visit site','https://fswindowtintyuma.com']]},
+    {flag:'Full-stack platform · 60 screens', title:'SanctuaryBase', tags:['build','ops'],
+     desc:'A complete rescue operations platform built for Saint Francis Rescue & Sanctuary of Yuma — animal records, volunteer scheduling, a donor CRM, vet triage, grant/finance tracking, and a public adoption site. Installs offline as a role-based PWA.',
+     links:[['Open live app','https://sanctuarybase.pages.dev'],['Public site','https://sfrescue.com']]},
+    {flag:'Case study · performance rebuild, Lighthouse 52→97', title:'Beauties of the Beasts', tags:['build','mkt','ops'],
+     desc:'Designed and built the public site for my own 501(c)(3) reptile rescue, then rebuilt it for performance — Lighthouse score 52 to 97, load time 6.2s to 1.4s. Adoption listings, surrender intake, and donation flows.',
+     links:[['Visit site','https://yumareptiles.com']]},
+    {flag:'Senior/veteran care & cleaning', title:'Venom Vision Designs', tags:['care','clean','mkt'],
+     desc:'Booking site for senior/veteran companion care and home cleaning — service-specific quote forms, testimonials, and pricing. (Web design has since moved to Avoria; this brand now covers care and cleaning.)',
+     links:[['Visit site','https://venomvision.pages.dev']]},
+    {flag:'Live web app', title:'Caregiver Assignment & Call-Out Auto-Match', tags:['build','ops','care','retail'],
+     desc:'Built after noticing a real operational gap — caregivers hired but never matched to a client. Tracks unassigned caregivers, ranks the best replacement during a call-out, and calculates the real cost of unassigned hours. Available on request.',
+     links:[]},
+    {flag:'Documentation & spreadsheets', title:'Caregiver assignment tracker', tags:['ops','care','train'],
+     desc:'A working spreadsheet with live formulas that flags any caregiver left unassigned past 7 days automatically. Available on request.',
+     links:[]}
+  ];
+
+  var BADGES_ALL = [
+    {seal:'50+', label:'Clients served, zero refunds', sub:'Venom Vision Designs', tags:['build','care','clean','mkt','retail']},
+    {seal:'5.0★', label:'Average client rating', sub:'Google reviews', tags:['build','care','clean','retail']},
+    {seal:'BBA', label:'Bachelor of Business Administration', sub:'Newbury University', tags:['ops','mkt','train','retail']},
+    {seal:'CPR', label:'CPR & First Aid Certified', sub:'', tags:['care','crisis','clean','retail']},
+    {seal:'FP', label:'Fingerprint Clearance Card', sub:'State & federal background check', tags:['care','clean']},
+    {seal:'DCW', label:'DCW Level 1 & 2', sub:'Direct Care Worker', tags:['care']},
+    {seal:'A9', label:'Article 9 Certified', sub:'', tags:['care']},
+    {seal:'RBT', label:'40hr RBT Coursework', sub:'Veterans & special-needs specialist', tags:['care']},
+    {seal:'501c3', label:'Founded a 501(c)(3)', sub:'Beauties of the Beasts, 2021', tags:['ops','mkt']},
+    {seal:'60', label:'Shipped a 60-screen platform', sub:'SanctuaryBase', tags:['build']},
+    {seal:'5yr', label:'5 years direct client care', sub:'', tags:['care']},
+    {seal:'5yr', label:'5 years training at scale', sub:'Everise, 2020–25', tags:['train']}
+  ];
+
+  var TESTIMONIALS = {
+    care: [{q:'Shiann treated my father with so much respect it brought me to tears. He’s dealt with caregivers for years and never once lit up — until her. She doesn’t just show up. She genuinely cares about him as a person.', who:'Maria R. — Senior & Veteran Care client'}],
+    clean: [{q:'I’ve hired three different cleaning services over the years. Shiann is the only one I’ve ever called back. My bathroom looked better than the day I moved in — and she found grout I forgot I had.', who:'James T. — Home Cleaning client'}],
+    build: [
+      {q:'I’d been putting off a website for two years because of the price… now I have something better than anything my competitors have. No subscription. No platform. Done.', who:'T. Nguyen — Service Business Owner'},
+      {q:'I needed a booking app for my salon and got quoted $8,000 by an agency. I got exactly what I needed for a fraction of that… my no-show rate dropped immediately.', who:'L. Castillo — Salon Owner'}
+    ]
+  };
+
+  function has(tags, key){ return tags.indexOf(key) !== -1; }
+  function pick(arr, key){ return arr.filter(function(x){ return has(x.tags, key); }); }
+
+  var LENSES = {
+    ops: {
+      label:'Operations & Admin', glyph:'O', sub:'scheduling, process, systems',
+      kicker:'Lens · Operations & Admin', headline:'Operations & Admin',
+      dek:'COO-level ownership of scheduling, staffing, and process — the person who builds the system so nothing falls through the cracks, then documents it so it survives after she leaves the room.',
+      stats:[{name:'Operations Leadership',pct:90},{name:'Documentation & SOPs',pct:95},{name:'Process Design',pct:88},{name:'Vendor & Stakeholder Coordination',pct:80}],
+      ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Open to operations, scheduling, and admin roles where building the right process matters.'
+    },
+    care: {
+      label:'Healthcare & Caregiving', glyph:'C', sub:'senior, veteran & special-needs care',
+      kicker:'Lens · Healthcare & Caregiving', headline:'Senior, Veteran & Special-Needs Care',
+      dek:'5+ years of direct client care for veterans, seniors, and clients with autism and cerebral palsy — plus the operational eye to fix the system around the care. Currently taking new senior & veteran care clients in Yuma & Foothills, AZ through Venom Vision Designs.',
+      stats:[{name:'Direct Client Care',pct:95},{name:'Care Plan Documentation',pct:90},{name:'Crisis Composure',pct:85},{name:'Family & Provider Communication',pct:88}],
+      testimonial:'care',
+      ctaPrimary:{label:'Book a free consult →',href:'https://venomvision.pages.dev'},
+      ctaSecondary:{label:'Email me about a caregiving role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaNote:'Hiring for a caregiving position? Email me directly. Need care for a family member? Book a free, no-commitment consult.'
+    },
+    train: {
+      label:'Training & Documentation', glyph:'T', sub:'SOPs, onboarding, job aids',
+      kicker:'Lens · Training & Documentation', headline:'Training & Documentation',
+      dek:'SOPs, onboarding guides, and job aids built for real teams — five years doing it professionally at scale, plus three volunteer programs still running on the same discipline today.',
+      stats:[{name:'Curriculum & SOP Design',pct:95},{name:'Onboarding Program Design',pct:92},{name:'Adult Learning Facilitation',pct:85},{name:'Documentation Systems',pct:90}],
+      ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Open to training, L&D, and documentation roles — remote or Yuma, AZ.'
+    },
+    build: {
+      label:'Web Design & Builder', glyph:'B', sub:'sites, apps, shipped software',
+      kicker:'Lens · Web Design & Builder', headline:'Web Design & App Development',
+      dek:'Not just requirements — shipped software. A 60-screen operations platform, live client websites, and a running studio (Avoria) built on hand-coded, no-subscription tech: one flat price, and no invoice until the client approves a working draft.',
+      stats:[{name:'Front-end Build (HTML/CSS/JS)',pct:82},{name:'Full-stack Product Design',pct:75},{name:'Client Delivery Speed',pct:90},{name:'Systems Thinking',pct:85}],
+      testimonial:'build',
+      flagship:{
+        title:'SanctuaryBase — the flagship build',
+        problem:'A real rescue was running volunteer shifts, medical records, and donor tracking across group chats and spreadsheets. Things fell through constantly, and no one could see the whole picture at once.',
+        approach:'Designed and hand-built a 60-screen operations platform from scratch — 16-tab animal records (health, meds, vaccines, behavior, SOS alerts), shift scheduling, a full donor CRM, a vet triage hub with an AI health assistant, and grant/finance tracking, all behind role-based access.',
+        result:'Shipped as an offline-capable PWA and running in daily use today at Saint Francis Rescue & Sanctuary of Yuma — not a prototype, the system staff actually work from.',
+        stats:[{k:'60',v:'screens shipped'},{k:'16',v:'tabs per record'},{k:'PWA',v:'offline-capable'},{k:'Solo',v:'design + build'}]
+      },
+      ctaPrimary:{label:'Start a project at Avoria →',href:'https://avoria-premium-agency.pages.dev'},
+      ctaSecondary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaNote:'Hiring for a technical/product role? Email me directly. Need a site or app built? Start a project through Avoria — nothing’s owed until you approve the draft.'
+    },
+    mkt: {
+      label:'Marketing & Content', glyph:'M', sub:'campaigns, copy, community',
+      kicker:'Lens · Marketing & Content', headline:'Marketing & Content',
+      dek:'Ran the full content and growth function for a 501(c)(3) — copy, campaigns, community, and paid strategy — after four years freelancing the same for other clients.',
+      stats:[{name:'Copywriting & Content',pct:78},{name:'Campaign Execution',pct:75},{name:'Community & Audience Growth',pct:80},{name:'Brand Voice Consistency',pct:82}],
+      ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Open to marketing, content, and communications roles — remote or Yuma, AZ.'
+    },
+    crisis: {
+      label:'Crisis & Support', glyph:'X', sub:'live calls, first-responder coordination',
+      kicker:'Lens · Crisis & Support', headline:'Crisis Response & Support',
+      dek:'Three years on live emergency calls at Uber, coordinating with first responders under time pressure, with full compliance documentation on every case.',
+      stats:[{name:'Composure Under Pressure',pct:92},{name:'Live Call Handling',pct:88},{name:'Compliance Documentation',pct:85},{name:'First-Responder Coordination',pct:80}],
+      ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Open to crisis response, trust & safety, or high-pressure support roles.'
+    },
+    retail: {
+      label:'Retail & Customer Service', glyph:'R', sub:'front-of-house, reliability',
+      kicker:'Lens · Retail & Customer Service', headline:'Retail & Customer Service',
+      dek:'No formal retail title on the resume — but the job is the same skill set I’ve run for a decade: stay composed with a difficult person, keep records accurate under pressure, show up every shift, and make people feel taken care of. I built my own booking, quoting, and scheduling systems from scratch, so a POS or scheduling tool won’t slow me down for long.',
+      stats:[{name:'Customer-Facing Composure',pct:90},{name:'Reliability & Punctuality',pct:95},{name:'Cash & Records Accuracy',pct:88},{name:'Fast-Paced Multitasking',pct:85}],
+      ctaPrimary:{label:'Email me about a role',href:'mailto:bowman.shiann@gmail.com'},
+      ctaSecondary:{label:'Call 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Open to retail, front-of-house, and customer service roles in Yuma, AZ — available for interviews immediately.'
+    },
+    clean: {
+      label:'Home Cleaning', glyph:'H', sub:'deep, standard & move-out',
+      kicker:'Lens · Home Cleaning', headline:'Home Cleaning',
+      dek:'Deep, standard, and move-out cleaning with a commercial steamer — from $80, with a simple guarantee: if anything’s missed, I come back free. Currently taking new clients in Yuma & Foothills, AZ through Venom Vision Designs.',
+      stats:[{name:'Attention to Detail',pct:95},{name:'Reliability & Consistency',pct:96},{name:'Client Trust & Retention',pct:92},{name:'Efficiency & Time Management',pct:85}],
+      testimonial:'clean',
+      ctaPrimary:{label:'Get a cleaning quote →',href:'https://venomvision.pages.dev'},
+      ctaSecondary:{label:'Text 928-916-3711',href:'tel:9289163711'},
+      ctaNote:'Free reclean if anything’s missed — every time, no questions asked.'
+    }
+  };
+
+  var LENS_ORDER = ['ops','care','train','build','mkt','crisis','retail','clean'];
+  var CODES = {ops:'OPS',care:'CARE',train:'TRN',build:'WEB',mkt:'MKT',crisis:'CRS',retail:'RTL',clean:'CLN'};
+  var REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var _visitedMem = [];
+
+  function getVisited(){
+    try{ return JSON.parse(sessionStorage.getItem('svb_visited') || '[]'); }
+    catch(e){ return _visitedMem.slice(); }
+  }
+  function addVisited(id){
+    var v = getVisited();
+    if(v.indexOf(id) === -1){ v.push(id); }
+    try{ sessionStorage.setItem('svb_visited', JSON.stringify(v)); } catch(e){ _visitedMem = v; }
+  }
+
+  function statBlockHtml(stats){
+    return '<div class="stats">' + stats.map(function(s){
+      return '<div class="stat-row"><div class="stat-name">'+s.name+'</div>'+
+        '<div class="stat-track"><div class="stat-fill" style="--pct:'+s.pct+'%"></div></div>'+
+        '<div class="stat-num">'+s.pct+'</div></div>';
+    }).join('') + '</div>';
+  }
+
+  function ledgerHtml(entries){
+    if(!entries.length) return '<p class="lede">No entries yet for this lens.</p>';
+    return '<div class="ledger">' + entries.map(function(e){
+      return '<div class="entry"><div class="entry-dates">'+e.dates+'</div>'+
+        '<div><div class="entry-title">'+e.title+'</div>'+
+        '<div class="entry-org">'+e.org+'</div>'+
+        '<div class="entry-desc">'+e.desc+'</div></div></div>';
+    }).join('') + '</div>';
+  }
+
+  function buildsHtml(builds){
+    if(!builds.length) return '';
+    return '<div class="builds">' + builds.map(function(b){
+      return '<div class="build-card"><div class="build-flag">'+b.flag+'</div>'+
+        '<div class="build-title">'+b.title+'</div>'+
+        '<div class="build-desc">'+b.desc+'</div>'+
+        '<div class="build-links">'+b.links.map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' →</a>';}).join('')+'</div></div>';
+    }).join('') + '</div>';
+  }
+
+  function caseStudyHtml(cs){
+    if(!cs) return '';
+    return '<div class="case-study"><div class="cs-title">'+cs.title+'</div>'+
+      '<div class="cs-row"><div class="cs-label">Problem</div><div class="cs-text">'+cs.problem+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">Approach</div><div class="cs-text">'+cs.approach+'</div></div>'+
+      '<div class="cs-row"><div class="cs-label">Result</div><div class="cs-text">'+cs.result+'</div></div>'+
+      '<div class="cs-stats">'+cs.stats.map(function(s){return '<div class="cs-stat"><div class="cs-k">'+s.k+'</div><div class="cs-v">'+s.v+'</div></div>';}).join('')+'</div>'+
+      '</div>';
+  }
+
+  function badgesHtml(badges){
+    if(!badges.length) return '';
+    return '<div class="badges">' + badges.map(function(b){
+      return '<div class="badge"><div class="badge-seal">'+b.seal+'</div>'+
+        '<div class="badge-label">'+b.label+'</div>'+
+        (b.sub ? '<div class="badge-sub">'+b.sub+'</div>' : '') + '</div>';
+    }).join('') + '</div>';
+  }
+
+  function renderHub(){
+    document.getElementById('backLink').style.display = 'none';
+    var app = document.getElementById('app');
+    app.innerHTML =
+      '<header class="masthead">'+
+        '<p class="kicker">Field Record · Operations, Care &amp; Systems</p>'+
+        '<div class="name-row"><div><h1>Shiann Bowman</h1>'+
+        '<div class="class-title">Operations builder — trained in caregiving, crisis response, and process design</div></div>'+
+        '<div class="field-stamp"><b>11</b>yrs in&nbsp;field</div></div>'+
+        '<p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Venom Vision Designs (senior/veteran care &amp; home cleaning). This page is organized like a field guide: pick the path that matches what brought you here, and it opens into its own dedicated record.</p>'+
+        '<div class="contact-line"><span>Yuma, AZ</span><a href="tel:9289163711">928-916-3711</a><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></div>'+
+      '</header>'+
+      '<section id="paths">'+
+        '<div class="section-head"><span class="tag">Start here</span><h2>Choose a path</h2></div>'+
+        '<p class="lede">Each path is a full, dedicated page — its own stats, record, and next step. Nothing here is a subset of something else.</p>'+
+        '<div class="hub-tiles" id="hubTiles"></div>'+
+      '</section>'+
+      '<section class="close">'+
+        '<h2>Not sure which one?</h2>'+
+        '<p>Whichever path fits, the full record backs it up. Happy to walk through any of it directly.</p>'+
+        '<div class="close-actions"><a class="btn" href="mailto:bowman.shiann@gmail.com">Email me</a><a class="btn ghost" href="tel:9289163711">Call 928-916-3711</a></div>'+
+      '</section>';
+
+    var tiles = document.getElementById('hubTiles');
+    LENS_ORDER.forEach(function(id){
+      var L = LENSES[id];
+      var a = document.createElement('a');
+      a.className = 'hub-tile';
+      a.href = '#' + id;
+      a.innerHTML = '<div class="glyph">'+L.glyph+'</div>'+
+        '<div class="t-label">'+L.label+'</div>'+
+        '<div class="t-sub">'+L.sub+'</div>'+
+        '<div class="t-go">Open path →</div>';
+      tiles.appendChild(a);
+    });
+  }
+
+  function renderLens(id){
+    var L = LENSES[id];
+    if(!L){ location.hash=''; return; }
+    document.getElementById('backLink').style.display = 'inline-flex';
+
+    var entries = pick(LEDGER_ALL, id);
+    var builds = pick(BUILDS_ALL, id);
+    var badges = pick(BADGES_ALL, id);
+    var t = L.testimonial ? TESTIMONIALS[L.testimonial] : null;
+    var tHtml = t ? t.map(function(item){
+      return '<div class="testimonial"><span class="quote-mark">&ldquo;</span><div class="qtext">'+item.q+'</div><div class="qwho">'+item.who+'</div></div>';
+    }).join('') : '';
+
+    var idx = LENS_ORDER.indexOf(id);
+    var nextL = LENSES[LENS_ORDER[(idx+1)%LENS_ORDER.length]];
+    var prevL = LENSES[LENS_ORDER[(idx-1+LENS_ORDER.length)%LENS_ORDER.length]];
+
+    var app = document.getElementById('app');
+    app.innerHTML =
+      '<div class="lens-hero">'+
+        '<p class="kicker">'+L.kicker+'</p>'+
+        '<h1>'+L.headline+'</h1>'+
+        '<p class="dek">'+L.dek+'</p>'+
+        '<div class="kbd-hint"><kbd>&larr;</kbd> '+prevL.label+' &nbsp;·&nbsp; '+nextL.label+' <kbd>&rarr;</kbd></div>'+
+      '</div>'+
+      (L.flagship ? '<section>'+caseStudyHtml(L.flagship)+'</section>' : '')+
+      '<section><div class="section-head"><span class="tag">Stats</span><h2>Working stats</h2></div>'+
+        statBlockHtml(L.stats) + '</section>'+
+      '<section><div class="section-head"><span class="tag">Record</span><h2>Relevant service record</h2></div>'+
+        ledgerHtml(entries) + '</section>'+
+      (builds.length ? '<section><div class="section-head"><span class="tag">Proof</span><h2>Shipped, not just proposed</h2></div>' + buildsHtml(builds) + '</section>' : '')+
+      (t ? '<section><div class="section-head"><span class="tag">Word for word</span><h2>What clients say</h2></div>'+
+        '<div style="display:flex;flex-direction:column;gap:14px;">'+tHtml+'</div></section>' : '')+
+      (badges.length ? '<section><div class="section-head"><span class="tag">Credentials</span><h2>Credentials &amp; milestones</h2></div>' + badgesHtml(badges) + '</section>' : '')+
+      '<section class="close" style="text-align:left;">'+
+        '<div class="section-head"><span class="tag">Next step</span><h2>Take this further</h2></div>'+
+        '<div class="cta-row">'+
+          '<a class="btn brass" '+(L.ctaPrimary.href.indexOf("http")===0 ? 'target="_blank" rel="noopener"' : '')+' href="'+L.ctaPrimary.href+'">'+L.ctaPrimary.label+'</a>'+
+          '<a class="btn ghost" href="'+L.ctaSecondary.href+'">'+L.ctaSecondary.label+'</a>'+
+        '</div>'+
+        '<p class="cta-note">'+L.ctaNote+'</p>'+
+      '</section>';
+  }
+
+  function renderTrail(currentId){
+    var trail = document.getElementById('trail');
+    var visited = getVisited();
+    var html = '<a class="trail-pip home'+(!currentId ? ' current' : '')+'" href="#">&#9670; Hub</a><span class="trail-sep"></span>';
+    html += LENS_ORDER.map(function(id){
+      var cls = 'trail-pip';
+      if(id === currentId) cls += ' current';
+      else if(visited.indexOf(id) !== -1) cls += ' visited';
+      return '<a class="'+cls+'" href="#'+id+'" title="'+LENSES[id].label+'">'+CODES[id]+'</a>';
+    }).join('<span class="trail-sep"></span>');
+    html += '<span class="trail-progress">'+visited.length+' / '+LENS_ORDER.length+' paths viewed</span>';
+    trail.innerHTML = html;
+  }
+
+  function showToast(id){
+    var L = LENSES[id];
+    var t = document.getElementById('toast');
+    t.innerHTML = '<b>Path opened</b>'+L.label;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  function attachReveal(){
+    var app = document.getElementById('app');
+    var els = app.querySelectorAll('section, .lens-hero, header.masthead');
+    if(REDUCE || !('IntersectionObserver' in window)){ return; }
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in-view'); obs.unobserve(en.target); }
+      });
+    }, {threshold:0.1});
+    els.forEach(function(el){ el.classList.add('reveal'); obs.observe(el); });
+  }
+
+  function attachTilt(){
+    if(REDUCE) return;
+    document.querySelectorAll('.hub-tile').forEach(function(tile){
+      tile.addEventListener('mousemove', function(e){
+        var r = tile.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        tile.style.transform = 'perspective(500px) rotateX('+(-y*6)+'deg) rotateY('+(x*6)+'deg) translateY(-3px)';
+      });
+      tile.addEventListener('mouseleave', function(){ tile.style.transform = ''; });
+    });
+  }
+
+  function paint(){
+    var hash = location.hash.replace('#','');
+    var wasVisited = hash ? getVisited().indexOf(hash) !== -1 : true;
+    if(!hash){ renderHub(); attachTilt(); }
+    else { renderLens(hash); if(!wasVisited){ addVisited(hash); } }
+    renderTrail(hash);
+    attachReveal();
+    window.scrollTo(0,0);
+    if(hash && !wasVisited){ showToast(hash); }
+    var app = document.getElementById('app');
+    if(!REDUCE){ requestAnimationFrame(function(){ app.classList.remove('transit'); }); }
+  }
+
+  function render(){
+    var app = document.getElementById('app');
+    if(REDUCE || !app.innerHTML.trim()){ paint(); return; }
+    app.classList.add('transit');
+    setTimeout(paint, 140);
+  }
+
+  document.getElementById('backLink').addEventListener('click', function(e){
+    e.preventDefault(); location.hash='';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.target && /input|textarea/i.test(e.target.tagName)) return;
+    var hash = location.hash.replace('#','');
+    var idx = LENS_ORDER.indexOf(hash);
+    if(idx === -1) return;
+    if(e.key === 'ArrowRight'){ location.hash = LENS_ORDER[(idx+1) % LENS_ORDER.length]; }
+    else if(e.key === 'ArrowLeft'){ location.hash = LENS_ORDER[(idx-1+LENS_ORDER.length) % LENS_ORDER.length]; }
+  });
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
