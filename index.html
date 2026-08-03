@@ -367,6 +367,46 @@
   .kbd-hint kbd{border:1px solid var(--rule-strong); border-radius:4px; padding:1px 6px; background:var(--paper-raised); font-family:var(--font-mono);}
 
   ::selection{background:var(--moss-soft); color:var(--ink);}
+
+  /* ===== Intro excavation reveal ===== */
+  #introOverlay{
+    position:fixed; inset:0; z-index:999; background:var(--paper);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px;
+    transition:transform .6s cubic-bezier(.6,0,.2,1), opacity .6s ease;
+  }
+  #introOverlay .intro-glyph{color:var(--brass); width:52px; height:52px; animation:dig-bounce 1s ease-in-out infinite;}
+  #introOverlay .intro-glyph svg{width:100%; height:100%;}
+  #introOverlay .intro-text{font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);}
+  #introOverlay.hide{transform:translateY(-100%); opacity:0; pointer-events:none;}
+  @keyframes dig-bounce{ 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-8px) rotate(-8deg);} }
+
+  /* ===== Cursor footprint trail ===== */
+  .cursor-print{
+    position:fixed; z-index:150; width:16px; height:16px; color:var(--brass); pointer-events:none;
+    opacity:.55; transform:translate(-50%,-50%) scale(1); animation:print-fade .8s ease-out forwards;
+  }
+  .cursor-print svg{width:100%; height:100%;}
+  @keyframes print-fade{ to{ opacity:0; transform:translate(-50%,-50%) scale(1.4); } }
+
+  /* ===== Mascot wiggle + unearth ===== */
+  @keyframes wiggle{ 0%,100%{transform:rotate(0deg) scale(1.06);} 25%{transform:rotate(-4deg) scale(1.06);} 75%{transform:rotate(4deg) scale(1.06);} }
+  .mascot:hover .mascot-photo{animation:wiggle .5s ease-in-out;}
+  .mascot-photo.unearth{animation:unearth-pop .32s ease-out;}
+  @keyframes unearth-pop{ 0%{transform:scale(1);} 50%{transform:scale(1.22) rotate(6deg);} 100%{transform:scale(1);} }
+
+  /* ===== Full-excavation celebration ===== */
+  .celebrate-toast{
+    position:fixed; left:50%; top:22px; transform:translate(-50%,-140%); z-index:210;
+    background:var(--ink); color:var(--paper); padding:16px 26px; border-radius:10px; border:2px solid var(--brass);
+    font-family:var(--font-display); font-size:15px; text-align:center; box-shadow:0 10px 34px rgba(0,0,0,.3);
+    transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .celebrate-toast.show{transform:translate(-50%,0);}
+  .celebrate-toast b{display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass-strong); margin-bottom:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    #introOverlay, .cursor-print, .mascot:hover .mascot-photo, .mascot-photo.unearth, .celebrate-toast{animation:none !important; transition:none !important;}
+  }
 </style>
 </head>
 <body>
@@ -383,6 +423,8 @@
 
 <div class="page" id="app" role="main" tabindex="-1"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="celebrate-toast" id="celebrateToast" role="status" aria-live="polite"></div>
+<div id="introOverlay" aria-hidden="true"></div>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged fossil photo" aria-hidden="true">
   <button class="lb-close" id="lbClose" aria-label="Close enlarged photo">&times;</button>
   <img id="lbImg" src="" alt="">
@@ -862,9 +904,24 @@
     renderTrail(hash);
     attachReveal();
     window.scrollTo(0,0);
-    if(hash && !wasVisited){ showToast(hash); }
+    if(hash && !wasVisited){ showToast(hash); checkFullExcavation(); }
     var app = document.getElementById('app');
     if(!REDUCE){ requestAnimationFrame(function(){ app.classList.remove('transit'); }); }
+  }
+
+  function checkFullExcavation(){
+    var v = getVisited();
+    var allDone = LENS_ORDER.every(function(id){ return v.indexOf(id) !== -1; });
+    if(!allDone) return;
+    var already = false;
+    try{ already = sessionStorage.getItem('svb_celebrated') === '1'; }catch(e){ already = window._svbCelebrated; }
+    if(already) return;
+    try{ sessionStorage.setItem('svb_celebrated','1'); }catch(e){ window._svbCelebrated = true; }
+    var t = document.getElementById('celebrateToast');
+    t.innerHTML = '<b>Full excavation complete</b>All 8 dig sites uncovered — that’s the whole record.';
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function(){ t.classList.remove('show'); }, 4200);
   }
 
   function render(){
@@ -901,9 +958,15 @@
     lightbox.setAttribute('aria-hidden', 'true');
     if(lightbox._returnFocus){ lightbox._returnFocus.focus(); }
   }
+  function unearthThenOpen(photoEl){
+    if(REDUCE){ openLightbox(photoEl); return; }
+    photoEl.classList.add('unearth');
+    setTimeout(function(){ photoEl.classList.remove('unearth'); }, 320);
+    setTimeout(function(){ openLightbox(photoEl); }, 150);
+  }
   document.addEventListener('click', function(e){
     var photoEl = e.target.closest ? e.target.closest('.mascot-photo') : null;
-    if(photoEl){ openLightbox(photoEl); return; }
+    if(photoEl){ unearthThenOpen(photoEl); return; }
     if(e.target === lightbox){ closeLightbox(); }
   });
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
@@ -912,14 +975,14 @@
       if(e.key === 'Escape'){ closeLightbox(); }
       if(e.key === 'Enter' || e.key === ' '){
         if(document.activeElement && document.activeElement.classList.contains('mascot-photo')){
-          e.preventDefault(); openLightbox(document.activeElement);
+          e.preventDefault(); unearthThenOpen(document.activeElement);
         }
       }
       return;
     }
     if(e.target && /input|textarea/i.test(e.target.tagName)) return;
     if(document.activeElement && document.activeElement.classList.contains('mascot-photo') && (e.key === 'Enter' || e.key === ' ')){
-      e.preventDefault(); openLightbox(document.activeElement); return;
+      e.preventDefault(); unearthThenOpen(document.activeElement); return;
     }
     var hash = location.hash.replace('#','');
     var idx = LENS_ORDER.indexOf(hash);
@@ -929,6 +992,39 @@
   });
   window.addEventListener('hashchange', render);
   render();
+
+  /* ---- Intro excavation reveal (first visit this session, hub only) ---- */
+  (function introReveal(){
+    var overlay = document.getElementById('introOverlay');
+    var seen = false;
+    try{ seen = sessionStorage.getItem('svb_introSeen') === '1'; }catch(e){ seen = window._svbIntroSeen; }
+    if(REDUCE || seen || location.hash){ overlay.remove(); return; }
+    try{ sessionStorage.setItem('svb_introSeen','1'); }catch(e){ window._svbIntroSeen = true; }
+    overlay.innerHTML = '<div class="intro-glyph">'+FOOT_SVG+'</div><div class="intro-text">Uncovering the record&hellip;</div>';
+    setTimeout(function(){
+      overlay.classList.add('hide');
+      setTimeout(function(){ overlay.remove(); }, 650);
+    }, 900);
+  })();
+
+  /* ---- Cursor footprint trail (pointer devices only) ---- */
+  (function cursorTrail(){
+    if(REDUCE || !window.matchMedia || matchMedia('(pointer: coarse)').matches) return;
+    var last = 0;
+    document.addEventListener('mousemove', function(e){
+      var now = Date.now();
+      if(now - last < 160) return;
+      last = now;
+      var el = document.createElement('div');
+      el.className = 'cursor-print';
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      el.innerHTML = FOOT_SVG;
+      el.style.transform = 'translate(-50%,-50%) rotate('+(Math.random()*30-15)+'deg)';
+      document.body.appendChild(el);
+      setTimeout(function(){ el.remove(); }, 820);
+    });
+  })();
 })();
 </script>
 
