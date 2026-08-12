@@ -44,13 +44,39 @@ tags: "sitemap"
         <section id="paths" class="reveal">
             <div class="section-head"><span class="tag">Basecamp</span><h2>Choose a dig site</h2></div>
             <p class="lede">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>
+
+            <div class="dig-progress" id="frDigProgress">
+                <div class="dig-progress-track"><div class="dig-progress-fill" id="frDigProgressFill"></div></div>
+                <div class="dig-progress-row">
+                    <span class="dig-progress-label" id="frDigProgressLabel">0 / {{ digSites.length }} sites excavated</span>
+                    <button class="dig-progress-random" id="frRandomDig" type="button">{% include "components/foot-icon.html" %} Surprise me</button>
+                </div>
+            </div>
+
             <div class="hub-tiles">
                 {% for site in digSites %}
-                <a class="hub-tile" href="/dig-sites/{{ site.slug }}/">
+                <a class="hub-tile" href="/dig-sites/{{ site.slug }}/" data-site-slug="{{ site.slug }}">
                     <div class="glyph">{{ site.letter }}</div>
                     <div class="t-label">{{ site.title }}</div>
                     <div class="t-sub">{{ site.subtitle }}</div>
                     <div class="t-go">{% include "components/foot-icon.html" %} Start the dig &rarr;</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="fossils" class="reveal">
+            <div class="section-head"><span class="tag">Field lab</span><h2>Fossil collection</h2></div>
+            <p class="lede">Every dig site is guarding a fossil. Visit a site to unlock it here — click an unlocked fossil to see it up close.</p>
+            <div class="fossil-collection" id="frFossilCollection">
+                {% for site in digSites %}
+                <a href="/dig-sites/{{ site.slug }}/" class="fossil-slot" data-site-slug="{{ site.slug }}"
+                    data-species="{{ site.fossilSpecies }}" data-credit="{{ site.fossilCredit }}" data-credit-url="{{ site.fossilCreditUrl }}" data-full="{{ site.fossilImage }}">
+                    <div class="fossil-slot-photo">
+                        <img src="{{ site.fossilImage }}" alt="{{ site.fossilSpecies }} fossil" loading="lazy">
+                        <div class="fossil-lock">?</div>
+                    </div>
+                    <div class="fossil-slot-label">???</div>
                 </a>
                 {% endfor %}
             </div>

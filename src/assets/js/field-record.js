@@ -68,6 +68,28 @@
         }, duration || 3200);
     }
 
+    /* ---- Confetti burst ---- */
+    function burstConfetti() {
+        if (REDUCE) return;
+        var colors = ["#b5651d", "#8f4d14", "#3f6a52", "#d8c49a", "#ecdfc4"];
+        for (var i = 0; i < 36; i++) {
+            (function () {
+                var piece = document.createElement("div");
+                piece.className = "fr-confetti-piece";
+                piece.style.left = Math.random() * 100 + "vw";
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.setProperty("--spin", Math.random() * 720 - 360 + "deg");
+                var duration = 1800 + Math.random() * 1200;
+                piece.style.animationDuration = duration + "ms";
+                piece.style.animationDelay = Math.random() * 300 + "ms";
+                document.body.appendChild(piece);
+                setTimeout(function () {
+                    piece.remove();
+                }, duration + 400);
+            })();
+        }
+    }
+
     function checkFullExcavation() {
         var visited = getVisited();
         var allDone = SITES.length > 0 && SITES.every(function (s) {
@@ -90,7 +112,47 @@
         t._timer = setTimeout(function () {
             t.classList.remove("show");
         }, 4200);
+        burstConfetti();
     }
+
+    /* ---- Hub-only: dig progress bar, fossil collection reveal, random-dig button ---- */
+    (function paintHubExtras() {
+        var fill = document.getElementById("frDigProgressFill");
+        var label = document.getElementById("frDigProgressLabel");
+        if (fill && label) {
+            var visited = getVisited();
+            var pct = SITES.length ? Math.round((visited.length / SITES.length) * 100) : 0;
+            fill.style.width = pct + "%";
+            label.textContent = visited.length + " / " + SITES.length + " sites excavated";
+        }
+
+        var visitedNow = getVisited();
+        document.querySelectorAll(".fossil-slot[data-site-slug]").forEach(function (slot) {
+            if (visitedNow.indexOf(slot.dataset.siteSlug) !== -1) {
+                slot.classList.add("unlocked");
+                var label2 = slot.querySelector(".fossil-slot-label");
+                if (label2) label2.textContent = slot.dataset.species;
+            }
+        });
+        document.querySelectorAll(".hub-tile[data-site-slug]").forEach(function (tile) {
+            if (visitedNow.indexOf(tile.dataset.siteSlug) !== -1) {
+                tile.classList.add("visited");
+            }
+        });
+
+        var randomBtn = document.getElementById("frRandomDig");
+        if (randomBtn) {
+            randomBtn.addEventListener("click", function () {
+                var visited2 = getVisited();
+                var unvisited = SITES.filter(function (s) {
+                    return visited2.indexOf(s.slug) === -1;
+                });
+                var pool = unvisited.length ? unvisited : SITES;
+                var pick = pool[Math.floor(Math.random() * pool.length)];
+                if (pick) location.href = "/dig-sites/" + pick.slug + "/";
+            });
+        }
+    })();
 
     /* ---- On a dig-site page: record visit, show "uncovered" toast on first visit ---- */
     if (currentSlug) {
@@ -186,6 +248,12 @@
         var photoEl = e.target.closest ? e.target.closest(".mascot-photo") : null;
         if (photoEl) {
             unearthThenOpen(photoEl);
+            return;
+        }
+        var fossilEl = e.target.closest ? e.target.closest(".fossil-slot.unlocked") : null;
+        if (fossilEl) {
+            e.preventDefault();
+            unearthThenOpen(fossilEl);
             return;
         }
         var eggEl = e.target.closest ? e.target.closest("[data-egg]") : null;

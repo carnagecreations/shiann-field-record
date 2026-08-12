@@ -1,21 +1,19 @@
 <!-- ============================================ -->
-<!--                Featured Posts                -->
+<!--           More Journal Entries               -->
 <!-- ============================================ -->
 
-<div id="blog-sidebar">
-    <!--Featured-->
-    <div class="cs-featured-group">
-        <span class="cs-sidebar-header">Featured Posts</span>
-        {%- for post in collections.featured | reverse -%}
-            <a class="cs-sidebar-link" href="{{ post.url }}">
-                <picture class="cs-sidebar-img">
-                    <img src="{% getUrl post.data.image | resize({ width: 120, height: 120 }) | jpeg %}" alt="{{ post.data.alt }}" width="60" height="60" loading="lazy" decoding="async">
-                </picture>
-                <div class="cs-content-group">
-                    <h3 class="cs-sidebar-title">{{ post.data.title }}</h3>
-                    <span class="cs-sidebar-date">{{ post.date | postDate }}</span>
-                </div>
-            </a>
-        {%- endfor -%}
+{% set otherPosts = collections.post | rejectattr("url", "equalto", page.url) | reverse %}
+{% if otherPosts.length %}
+<section class="reveal">
+    <div class="section-head"><span class="tag">More entries</span><h2>Keep reading</h2></div>
+    <div class="builds">
+        {% for post in otherPosts | limit(4) %}
+        <a class="build-card journal-entry-card" href="{{ post.url }}">
+            <div class="build-flag">{{ post.data.date | postDate }}</div>
+            <div class="build-title">{{ post.data.title }}</div>
+            <div class="build-desc">{{ post.data.description }}</div>
+        </a>
+        {% endfor %}
     </div>
-</div>
+</section>
+{% endif %}

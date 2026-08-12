@@ -1,0 +1,48 @@
+---
+title: "Field Journal | Shiann Bowman"
+description: "Notes from the dig — field-journal entries on operations, caregiving, training, web design, and everything else Shiann Bowman builds."
+permalink: "/journal/"
+tags: "sitemap"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    <div class="fr-container">
+        <div class="lens-hero reveal">
+            <p class="kicker">{% include "components/foot-icon.html" %} Field Journal</p>
+            <h1 class="fr-h1">Notes from the dig</h1>
+            <p class="dek">Short write-ups from wherever the work happens to be — operations, caregiving, the rescue, or whatever I'm building at Avoria.</p>
+        </div>
+
+        {% set posts = collections.post | reverse %}
+        <section class="reveal">
+            {% if posts.length %}
+            <div class="ledger">
+                {% for post in posts %}
+                <a class="entry journal-entry-link" href="{{ post.url }}">
+                    <div class="entry-dates">{{ post.data.date | postDate }}</div>
+                    <div>
+                        <div class="entry-title">{{ post.data.title }}</div>
+                        <div class="entry-desc">{{ post.data.description }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="lede">Nothing posted yet — check back soon.</p>
+            {% endif %}
+        </section>
+
+        <section class="close text-left reveal">
+            <div class="section-head"><span class="tag">Basecamp</span><h2>Looking for the career record?</h2></div>
+            <div class="cta-row">
+                <a class="btn brass" href="/">Back to Basecamp</a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -25,13 +25,13 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://shiann-field-record.pages.dev
 
 # Image folders
-media_folder: "src/assets/images/blog"
-public_folder: "/assets/images/blog"
+media_folder: "src/assets/images/journal"
+public_folder: "/assets/images/journal"
 
 # Decap CMS Collections
 collections:
     - name: "blog"
-      label: "Blog"
+      label: "Field Journal"
       folder: "src/content/blog"
       create: true
       slug: "{{slug}}"
@@ -41,12 +41,20 @@ collections:
                 label: "URL Slug",
                 name: "url",
                 widget: "string",
-                hint: 'Specify where the page will be written to. If you use "Blog Post", the post will be accessible from "blog/blog-post"',
+                hint: 'Specify where the entry will be written to. If you use "Field Notes", the entry will be accessible from "journal/field-notes"',
             }
-          - { label: "Description", name: "description", widget: "string" }
-          - { label: "Author", name: "author", widget: "string" }
+          - { label: "Description", name: "description", widget: "string", hint: "Shown in the journal list and social previews." }
+          - { label: "Author", name: "author", widget: "string", default: "Shiann Bowman" }
           - { label: "Date", name: "date", widget: "datetime" }
-          - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
-          - { label: "Featured Image", name: "image", widget: "image" }
-          - { label: "Image Caption", name: "imageAlt", widget: "string" }
+          - {
+                label: "Related dig site",
+                name: "tags",
+                widget: "select",
+                multiple: true,
+                default: ["post"],
+                hint: "Keep 'post' plus optionally tag which dig site(s) this entry relates to.",
+                options: ["post", "ops", "care", "train", "build", "mkt", "crisis", "retail", "clean"],
+            }
+          - { label: "Cover Image", name: "image", widget: "image", required: false }
+          - { label: "Image Caption", name: "imageAlt", widget: "string", required: false }
           - { label: "Body", name: "body", widget: "markdown" }

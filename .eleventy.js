@@ -118,6 +118,14 @@ module.exports = function (eleventyConfig) {
 	 */
 	eleventyConfig.addFilter("toJson", (value) => JSON.stringify(value).replace(/</g, "\\u003c"));
 
+	/*
+	 * ✂️ Limit
+	 * Returns the first N items of an array (Nunjucks' built-in `slice` splits
+	 * into N groups rather than truncating, so this fills that gap).
+	 * Usage: {% for item in items | limit(4) %}
+	 */
+	eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+
 	// ═════════════════════════════════════════════════════════════════════════
 	// SHORTCODES
 	// Generate dynamic content with JavaScript

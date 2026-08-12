@@ -12,8 +12,9 @@
         <span class="trail-sep">{% include "components/foot-icon.html" %}</span>
         {% for site in digSites %}
         <a class="trail-pip" data-site-slug="{{ site.slug }}" href="/dig-sites/{{ site.slug }}/" title="{{ site.title }}" {% if page.url == "/dig-sites/" + site.slug + "/" %}aria-current="page"{% endif %}>{{ site.code }}</a>
-        {% if not loop.last %}<span class="trail-sep">{% include "components/foot-icon.html" %}</span>{% endif %}
+        <span class="trail-sep">{% include "components/foot-icon.html" %}</span>
         {% endfor %}
+        <a class="trail-pip journal-pip {% if "/journal/" in page.url %}current{% endif %}" href="/journal/" title="Field Journal" {% if "/journal/" in page.url %}aria-current="page"{% endif %}>Journal</a>
         <span class="trail-progress" id="frTrailProgress"></span>
     </nav>
 </div>
