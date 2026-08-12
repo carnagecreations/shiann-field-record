@@ -387,4 +387,34 @@
             }, 820);
         });
     })();
+
+    /* ---- Dinosaur back-to-top ---- */
+    (function backToTop() {
+        var btn = document.getElementById("frBackToTop");
+        var icon = document.getElementById("frDinoIcon");
+        if (!btn || !icon) return;
+
+        function toggleVisibility() {
+            btn.classList.toggle("show", window.scrollY > 420);
+        }
+        toggleVisibility();
+        window.addEventListener("scroll", toggleVisibility, { passive: true });
+
+        btn.addEventListener("click", function () {
+            if (REDUCE) {
+                window.scrollTo({ top: 0, behavior: "auto" });
+                return;
+            }
+            icon.classList.remove("fr-dino-run");
+            // eslint-disable-next-line no-unused-expressions
+            icon.offsetWidth; // restart the animation if clicked again mid-run
+            icon.classList.add("fr-dino-run");
+            setTimeout(function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 480);
+            setTimeout(function () {
+                icon.classList.remove("fr-dino-run");
+            }, 1500);
+        });
+    })();
 })();

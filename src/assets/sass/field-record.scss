@@ -44,6 +44,10 @@ body.dark-mode {
 }
 
 .field-record-page {
+    /* root.scss sets overflow-x: hidden on body, which computes overflow-y to
+       auto and turns body into its own scroll container — that breaks
+       position: sticky on .fr-hud (sticky needs an unconstrained ancestor). */
+    overflow-x: visible;
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-body);
@@ -677,13 +681,39 @@ body.dark-mode {
     }
     @keyframes fr-print-fade { to{ opacity:0; transform:translate(-50%,-50%) scale(1.4); } }
 
+    /* ===== Dinosaur back-to-top ===== */
+    .fr-back-to-top {
+        position: fixed; right: 20px; bottom: 20px; z-index: 60;
+        width: 54px; height: 54px; border-radius: 50%;
+        border: 2px solid var(--brass); background: var(--paper-raised); color: var(--brass);
+        display: flex; align-items: center; justify-content: center; cursor: pointer;
+        box-shadow: var(--fr-shadow);
+        opacity: 0; transform: translateY(16px) scale(.85); pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease, border-color .2s ease, background .2s ease;
+
+        &.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        &:hover { background: var(--brass); color: var(--paper); }
+        &:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+    }
+    .fr-dino-icon { width: 30px; height: 30px; }
+    .fr-dino-icon.fr-dino-run {
+        animation: fr-dino-run .5s steps(2, end) 3;
+    }
+    @keyframes fr-dino-run {
+        0%   { transform: translateY(0) rotate(0deg); }
+        25%  { transform: translateY(-3px) rotate(-6deg); }
+        50%  { transform: translateY(0) rotate(0deg); }
+        75%  { transform: translateY(-3px) rotate(6deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+    }
+
     .foot-ico { display: inline-flex; align-items: center; justify-content: center; color: var(--rule-strong); flex-shrink: 0; }
     .foot-ico svg { display: block; width: 1em; height: 1em; }
 
     ::selection { background: var(--moss-soft); color: var(--ink); }
 
     @media print {
-        .fr-hud, .fr-toast, .kbd-hint, .print-btn-row { display: none !important; }
+        .fr-hud, .fr-toast, .kbd-hint, .print-btn-row, .fr-back-to-top { display: none !important; }
         .reveal { opacity: 1 !important; transform: none !important; }
         section { break-inside: avoid; padding: 14px 0; }
         .case-study, .build-card, .testimonial, .mascot, .circus-card, .field-pass-card, .badge { break-inside: avoid; }
@@ -693,7 +723,8 @@ body.dark-mode {
     @media (prefers-reduced-motion: reduce) {
         .mascot-photo, .mascot-photo::after, .fr-intro-overlay, .fr-cursor-print,
         .mascot:hover .mascot-photo, .mascot-photo.unearth, .fr-celebrate-toast,
-        .egg-pop, .stat-fill, .reveal, .fr-toast, #app, .fr-confetti-piece, .dig-progress-fill {
+        .egg-pop, .stat-fill, .reveal, .fr-toast, #app, .fr-confetti-piece, .dig-progress-fill,
+        .fr-dino-icon.fr-dino-run, .fr-back-to-top {
             animation: none !important;
             transition: none !important;
         }

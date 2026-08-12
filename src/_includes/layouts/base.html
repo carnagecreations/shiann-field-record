@@ -52,6 +52,17 @@
             {% block body %}{% endblock %}
         </main>
 
+        <button class="fr-back-to-top" id="frBackToTop" type="button" aria-label="Back to top">
+            <svg class="fr-dino-icon" id="frDinoIcon" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+                <path d="M4 34 Q10 23 19 25 L21 31 Q13 31 9 40 Z"/>
+                <ellipse cx="25" cy="27" rx="10" ry="8"/>
+                <path d="M31 21 Q39 15 41 7 Q43 9 41 13 Q45 13 45 17 Q41 19 37 19 Q35 23 31 25 Z"/>
+                <path d="M16 19 L19 12 L22 19 L25 11 L28 19 Z"/>
+                <rect x="19" y="33" width="5" height="10" rx="2"/>
+                <rect x="28" y="33" width="5" height="10" rx="2"/>
+            </svg>
+        </button>
+
         <div class="fr-toast" id="frToast" role="status" aria-live="polite"></div>
         <div class="fr-celebrate-toast" id="frCelebrateToast" role="status" aria-live="polite"></div>
         <div class="fr-intro-overlay" id="frIntroOverlay" aria-hidden="true"></div>
