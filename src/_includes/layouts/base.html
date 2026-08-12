@@ -37,12 +37,13 @@
         <link rel="stylesheet" href="/assets/css/root.css">
         <script defer src="/assets/js/dark.js"></script>
         <script defer src="/assets/js/nav.js"></script>
+        <script defer src="/assets/js/field-record.js"></script>
 
         {% block head %}{% endblock %}
 
         <title>{{ title }}</title>
     </head>
-    <body>
+    <body class="field-record-page">
         <!--Screen reader skip main nav-->
         <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
 
@@ -50,7 +51,16 @@
         <main id="main">
             {% block body %}{% endblock %}
         </main>
-        {% include "sections/footer.html" %}
 
+        <div class="fr-toast" id="frToast" role="status" aria-live="polite"></div>
+        <div class="fr-celebrate-toast" id="frCelebrateToast" role="status" aria-live="polite"></div>
+        <div class="fr-intro-overlay" id="frIntroOverlay" aria-hidden="true"></div>
+        <div class="fr-lightbox" id="frLightbox" role="dialog" aria-modal="true" aria-label="Enlarged fossil photo" aria-hidden="true">
+            <button class="lb-close" id="lbClose" aria-label="Close enlarged photo">&times;</button>
+            <img id="lbImg" src="" alt="">
+            <div class="lb-caption" id="lbCaption"></div>
+            <div class="lb-credit" id="lbCredit"></div>
+        </div>
+        <script type="application/json" id="frSitesData">{{ digSites | toJson | safe }}</script>
     </body>
 </html>

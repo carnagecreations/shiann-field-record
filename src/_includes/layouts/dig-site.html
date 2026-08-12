@@ -1,90 +1,143 @@
 {% set site = siteData %}
+{% set entries = ledger | filterByTag(site.tagKey) %}
+{% set builds = builds | filterByTag(site.tagKey) %}
+{% set siteBadges = badges | filterByTag(site.tagKey) %}
+{% set t = testimonials[site.tagKey] if site.testimonial else null %}
 
-<section class="dig-site-hero">
-    <div class="cs-container">
-        <a href="/" class="back-link">&larr; Back to Basecamp</a>
-        <div class="site-header">
-            <div class="letter-large">{{ site.letter }}</div>
-            <h1>{{ site.title }}</h1>
-            <p class="subtitle">{{ site.subtitle }}</p>
+<div class="fr-container">
+    <div class="lens-hero reveal">
+        <p class="kicker">{{ site.kicker }}</p>
+        <h1 class="fr-h1">{{ site.headline }}</h1>
+        <p class="dek">{{ site.dek }}</p>
+        <div class="kbd-hint"><kbd>&larr;</kbd> <span id="frPrevLabel"></span> &nbsp;&middot;&nbsp; <span id="frNextLabel"></span> <kbd>&rarr;</kbd></div>
+
+        {% if site.fossilSpecies %}
+        <div class="mascot">
+            <div class="mascot-photo" tabindex="0" role="button" aria-label="Enlarge photo of {{ site.fossilSpecies }}"
+                data-species="{{ site.fossilSpecies }}" data-credit="{{ site.fossilCredit }}" data-credit-url="{{ site.fossilCreditUrl }}" data-full="{{ site.fossilImage }}">
+                <img src="{{ site.fossilImage }}" alt="Real fossil skeleton of {{ site.fossilSpecies }}">
+            </div>
+            <div>
+                <div class="m-name{% if site.fossilEgg %} has-egg{% endif %}"{% if site.fossilEgg %} data-egg="{{ site.fossilEgg }}" tabindex="0" role="button" aria-label="Reveal a fun fact"{% endif %}><span>Dig-site mascot</span>{{ site.fossilSpecies }}</div>
+                <div class="m-blurb">{{ site.fossilBlurb }}</div>
+                <a class="m-credit" href="{{ site.fossilCreditUrl }}" target="_blank" rel="noopener">{{ site.fossilCredit }}</a>
+            </div>
         </div>
-    </div>
-</section>
-
-<section class="dig-site-content">
-    <div class="cs-container">
-        <!-- Fossil ID Section -->
-        {% if site.fossilImage %}
-        <section class="fossil-id">
-            <div class="section-head">
-                <span class="tag">Fossil ID</span>
-                <h2>Species match: {{ site.fossilSpecies }}</h2>
-            </div>
-            <div class="fossil-body">
-                <div class="fossil-photo">
-                    <img src="{{ site.fossilImage }}" alt="{{ site.fossilSpecies }} fossil" width="360" height="280" loading="lazy" decoding="async">
-                    <p class="fossil-credit"><a href="{{ site.fossilCreditUrl }}" target="_blank" rel="noopener">{{ site.fossilCredit }}</a></p>
-                </div>
-                <p class="fossil-blurb">{{ site.fossilBlurb }}</p>
-            </div>
-        </section>
         {% endif %}
+    </div>
 
-        <!-- Vitals Section -->
-        <section class="vitals">
-            <div class="section-head">
-                <span class="tag">Vitals</span>
-                <h2>Working stats</h2>
-            </div>
-            <p>{{ site.vitals }}</p>
-        </section>
-
-        <!-- Description -->
-        <section class="dig-description">
-            <p>{{ site.description }}</p>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services">
-            <div class="section-head">
-                <span class="tag">Dig log</span>
-                <h2>Services & specialties</h2>
-            </div>
-            <ul class="services-list">
-                {% for service in site.services %}
-                <li>{{ service }}</li>
+    {% if site.flagship %}
+    <section class="reveal">
+        {% set cs = site.flagship %}
+        {% set labels = cs.labels or ["The site", "The dig", "The find"] %}
+        <div class="case-study">
+            <div class="cs-title">{% include "components/foot-icon.html" %} {{ cs.title }}</div>
+            <div class="cs-row"><div class="cs-label">{{ labels[0] }}</div><div class="cs-text">{{ cs.problem }}</div></div>
+            <div class="cs-row"><div class="cs-label">{{ labels[1] }}</div><div class="cs-text">{{ cs.approach }}</div></div>
+            <div class="cs-row"><div class="cs-label">{{ labels[2] }}</div><div class="cs-text">{{ cs.result }}</div></div>
+            <div class="cs-stats">
+                {% for s in cs.stats %}
+                <div class="cs-stat"><div class="cs-k">{{ s.k }}</div><div class="cs-v">{{ s.v }}</div></div>
                 {% endfor %}
-            </ul>
-        </section>
-
-        <!-- Contact CTA -->
-        <section class="site-cta">
-            <h2>Ready to start a dig?</h2>
-            <p>Let's talk about what you need and how I can help.</p>
-            <div class="cta-buttons">
-                <a href="tel:{{ client.phoneForTel }}" class="cs-button-solid">Call {{ client.phoneFormatted }}</a>
-                <a href="mailto:{{ client.email }}" class="cs-button-solid">Email me</a>
             </div>
-        </section>
-    </div>
-</section>
+            {% if cs.link %}
+            <div class="cs-link"><a href="{{ cs.link.href }}" target="_blank" rel="noopener">{{ cs.link.label }} &rarr;</a></div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
 
-<!-- Navigation to other dig sites -->
-<section class="other-sites">
-    <div class="cs-container">
-        <h2>Explore other dig sites</h2>
-        <ul class="sites-nav-grid">
-            {% for otherSite in digSites %}
-                {% if otherSite.id != siteId %}
-                <li>
-                    <a href="/dig-sites/{{ otherSite.slug }}/">
-                        <div class="letter-badge">{{ otherSite.letter }}</div>
-                        <h3>{{ otherSite.title }}</h3>
-                    </a>
-                </li>
-                {% endif %}
+    <section class="reveal">
+        <div class="section-head"><span class="tag">Vitals</span><h2>Working stats</h2></div>
+        <div class="stats">
+            {% for s in site.stats %}
+            <div class="stat-row">
+                <div class="stat-name">{{ s.name }}</div>
+                <div class="stat-track"><div class="stat-fill" style="--pct:{{ s.pct }}%"></div></div>
+                <div class="stat-num">{{ s.pct }}</div>
+            </div>
             {% endfor %}
-        </ul>
-    </div>
-</section>
+        </div>
+    </section>
 
+    <section class="reveal">
+        <div class="section-head"><span class="tag">Dig log</span><h2>Relevant service record</h2></div>
+        {% if entries.length %}
+        <div class="ledger">
+            {% for e in entries %}
+            <div class="entry">
+                <div class="entry-dates">{{ e.dates }}</div>
+                <div>
+                    <div class="entry-title">{{ e.title }}</div>
+                    <div class="entry-org">{{ e.org }}</div>
+                    <div class="entry-desc">{{ e.desc }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="lede">No entries yet for this lens.</p>
+        {% endif %}
+    </section>
+
+    {% if builds.length %}
+    <section class="reveal">
+        <div class="section-head"><span class="tag">Recovered artifacts</span><h2>Shipped, not just proposed</h2></div>
+        <div class="builds">
+            {% for b in builds %}
+            <div class="build-card">
+                <div class="build-flag">{{ b.flag }}</div>
+                <div class="build-title">{{ b.title }}</div>
+                <div class="build-desc">{{ b.desc }}</div>
+                {% if b.links.length %}
+                <div class="build-links">
+                    {% for l in b.links %}
+                    <a href="{{ l[1] }}" target="_blank" rel="noopener">{{ l[0] }} &rarr;</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if t %}
+    <section class="reveal">
+        <div class="section-head"><span class="tag">Field notes</span><h2>What clients say</h2></div>
+        <div class="testimonial-list">
+            {% for item in t %}
+            <div class="testimonial">
+                <span class="quote-mark">&ldquo;</span>
+                <div class="qtext">{{ item.q }}</div>
+                <div class="qwho">{{ item.who }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if siteBadges.length %}
+    <section class="reveal">
+        <div class="section-head"><span class="tag">Fossil record</span><h2>Credentials &amp; milestones</h2></div>
+        <div class="badges">
+            {% for b in siteBadges %}
+            <div class="badge">
+                <div class="badge-seal">{{ b.seal }}</div>
+                <div class="badge-label">{{ b.label }}</div>
+                {% if b.sub %}<div class="badge-sub">{{ b.sub }}</div>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="close text-left reveal">
+        <div class="section-head"><span class="tag">Next expedition</span><h2>Take this further</h2></div>
+        <div class="cta-row">
+            <a class="btn brass" {% if "http" in site.ctaPrimary.href %}target="_blank" rel="noopener"{% endif %} href="{{ site.ctaPrimary.href }}">{{ site.ctaPrimary.label }}</a>
+            <a class="btn ghost" href="{{ site.ctaSecondary.href }}">{{ site.ctaSecondary.label }}</a>
+        </div>
+        <p class="cta-note">{{ site.ctaNote }}</p>
+    </section>
+</div>

@@ -104,6 +104,20 @@ module.exports = function (eleventyConfig) {
 	 */
 	eleventyConfig.addFilter("isoDate", filterIsoDate);
 
+	/*
+	 * 🏷️ Filter By Tag
+	 * Returns only the items whose `tags` array includes the given tag.
+	 * Usage: {% for entry in ledger | filterByTag(site.tagKey) %}
+	 */
+	eleventyConfig.addFilter("filterByTag", (arr, tag) => (arr || []).filter((item) => (item.tags || []).includes(tag)));
+
+	/*
+	 * 🧩 To JSON
+	 * Safely serializes a JS value for embedding in a <script type="application/json"> tag.
+	 * Usage: {{ digSites | toJson | safe }}
+	 */
+	eleventyConfig.addFilter("toJson", (value) => JSON.stringify(value).replace(/</g, "\\u003c"));
+
 	// ═════════════════════════════════════════════════════════════════════════
 	// SHORTCODES
 	// Generate dynamic content with JavaScript

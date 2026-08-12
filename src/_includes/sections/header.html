@@ -1,38 +1,19 @@
 <!-- ============================================ -->
-<!--                 Navigation                   -->
+<!--         Field Record HUD (trail nav)         -->
 <!-- ============================================ -->
 
-<header id="cs-navigation">
-    <div class="cs-container">
-        <!--Nav Logo-->
-        <a href="/" class="cs-logo" aria-label="Field Record home page">
-            Field Record
-        </a>
-        <!--Navigation List-->
-        <nav class="cs-nav" aria-label="main navigation">
-            <!--Mobile Nav Toggle-->
-            <button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-label="mobile menu toggle" aria-haspopup="menu">
-                <span class="cs-box" aria-hidden="true">
-                    <span class="cs-line cs-line1" aria-hidden="true"></span>
-                    <span class="cs-line cs-line2" aria-hidden="true"></span>
-                    <span class="cs-line cs-line3" aria-hidden="true"></span>
-                </span>
-            </button>
-            <div class="cs-ul-wrapper" id="cs-ul-wrapper" inert>
-                <ul id="cs-expanded" class="cs-ul">
-                    <li class="cs-li">
-                        <a href="/" class="cs-li-link {% if page.url == "/" %} cs-active {% endif %}" {% if page.url == "/" %} aria-current="page" {% endif %}>
-                            Basecamp
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <a href="mailto:{{ client.email }}" class="cs-button-solid cs-nav-button">Email Me</a>
-        <!--Dark Mode toggle, uncomment button code if you want to enable a dark mode toggle-->
-        <button id="dark-mode-toggle" aria-label="dark mode toggle" aria-pressed="false">
-            <img class="cs-moon" aria-hidden="true" src="/assets/svgs/moon.svg" decoding="async" alt="" width="15" height="15">
-            <img class="cs-sun" aria-hidden="true" src="/assets/svgs/sun.svg" decoding="async" alt="" width="15" height="15">
-        </button>
+<div class="fr-hud">
+    <div class="fr-topbar">
+        <a class="brand-mini" href="/"><b>Shiann Bowman</b> &middot; Field Record</a>
+        <a class="back-link" href="/" {% if page.url == "/" %}style="display:none;"{% endif %}>&larr; All paths</a>
     </div>
-</header>
+    <nav class="trail" id="frTrail" aria-label="Path navigator">
+        <a class="trail-pip home {% if page.url == "/" %}current{% endif %}" href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>&#9670; Basecamp</a>
+        <span class="trail-sep">{% include "components/foot-icon.html" %}</span>
+        {% for site in digSites %}
+        <a class="trail-pip" data-site-slug="{{ site.slug }}" href="/dig-sites/{{ site.slug }}/" title="{{ site.title }}" {% if page.url == "/dig-sites/" + site.slug + "/" %}aria-current="page"{% endif %}>{{ site.code }}</a>
+        {% if not loop.last %}<span class="trail-sep">{% include "components/foot-icon.html" %}</span>{% endif %}
+        {% endfor %}
+        <span class="trail-progress" id="frTrailProgress"></span>
+    </nav>
+</div>

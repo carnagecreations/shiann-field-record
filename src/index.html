@@ -20,139 +20,93 @@ tags: "sitemap"
 {% endblock %}
 
 {% block body %}
-    <!-- ============================================ -->
-    <!--                  Basecamp                    -->
-    <!-- ============================================ -->
-
-    <section class="field-record-hero">
-        <div class="cs-container">
-            <div class="hero-content">
-                <h1>FIELD RECORD</h1>
-                <span class="subtitle">A Career Excavation</span>
-                <div class="intro">
-                    <img class="field-photo" src="/assets/images/field-record/shiann-with-snake.jpg" alt="Shiann Bowman smiling while helping restrain a large snake at a reptile rescue event" width="160" height="160" loading="eager" decoding="async">
-                    <p><strong>Shiann Bowman</strong></p>
-                    <p class="tagline">Operations builder — trained in caregiving, crisis response, and process design</p>
-                    <p class="years">11 yrs in field</p>
+    <div class="fr-container">
+        <header class="masthead reveal">
+            <p class="kicker">{% include "components/foot-icon.html" %} Field Record · A Career Excavation</p>
+            <div class="name-row">
+                <div class="field-photo egg-trigger" tabindex="0" role="button" aria-label="Reveal a fun fact" data-egg="In animal rescue since I was 15 — horses took up most of those years before reptiles did.">
+                    <img src="/assets/images/field-record/shiann-with-snake.jpg" alt="Shiann Bowman smiling while helping restrain a large snake at a reptile rescue event">
                 </div>
-                <p class="description">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design & custom apps) and Clean Convictions (house cleaning). I also run a reptile rescue — turns out that's not even new to the family.</p>
-                <div class="contact-info">
-                    <p>Yuma, AZ</p>
-                    <p><a href="tel:928-916-3711">928-916-3711</a></p>
-                    <p><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></p>
+                <div>
+                    <h1 class="fr-h1">Shiann Bowman</h1>
+                    <div class="class-title">Operations builder — trained in caregiving, crisis response, and process design</div>
                 </div>
+                <div class="field-stamp egg-trigger" tabindex="0" role="button" aria-label="Reveal a fun fact" data-egg="Fuel of choice: tiramisu. Non-negotiable."><b>11</b>yrs in&nbsp;field</div>
             </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--              Dig Site Selector              -->
-    <!-- ============================================ -->
-
-    <section class="dig-sites-basecamp">
-        <div class="cs-container">
-            <div class="section-head">
-                <span class="tag">Basecamp</span>
-                <h2>Choose a dig site</h2>
+            <p class="bio">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design &amp; custom apps) and Clean Convictions (house cleaning). I also run a reptile rescue — turns out that's not even new to the family (more on that below). This page is one excavation site per specialty — pick the one that matches what brought you here, and it opens into its own dedicated dig.</p>
+            <div class="contact-line">
+                <span>Yuma, AZ</span>
+                <a href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
+                <a href="mailto:{{ client.email }}">{{ client.email }}</a>
             </div>
-            <p class="intro-text">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>
-            <ul class="dig-sites-grid">
+        </header>
+
+        <section id="paths" class="reveal">
+            <div class="section-head"><span class="tag">Basecamp</span><h2>Choose a dig site</h2></div>
+            <p class="lede">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>
+            <div class="hub-tiles">
                 {% for site in digSites %}
-                <li class="dig-site-card">
-                    <a href="/dig-sites/{{ site.slug }}/">
-                        <div class="letter-badge">{{ site.letter }}</div>
-                        <h3>{{ site.title }}</h3>
-                        <p class="subtitle">{{ site.subtitle }}</p>
-                    </a>
-                </li>
+                <a class="hub-tile" href="/dig-sites/{{ site.slug }}/">
+                    <div class="glyph">{{ site.letter }}</div>
+                    <div class="t-label">{{ site.title }}</div>
+                    <div class="t-sub">{{ site.subtitle }}</div>
+                    <div class="t-go">{% include "components/foot-icon.html" %} Start the dig &rarr;</div>
+                </a>
                 {% endfor %}
-            </ul>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--              Family Lore                     -->
-    <!-- ============================================ -->
-
-    <section class="family-lore">
-        <div class="cs-container">
-            <div class="section-head">
-                <span class="tag">Family lore</span>
-                <h2>Meet Princess Naldu</h2>
             </div>
-            <div class="lore-content">
-                <p class="lore-subtitle">True Family History · Circa 1920s</p>
-                <div class="lore-body">
-                    <div class="polaroid">
-                        <img src="/assets/images/field-record/princess-naldu.jpg" alt="Agnes E. Sukowaty Morris, billed as Princess Naldu, posing in her snake-charmer costume in front of an American flag, holding a live snake, circa 1920s." width="220" height="320" loading="lazy" decoding="async">
-                        <div class="p-caption">PRINCESS NALDU, CIRCA 1920s</div>
+        </section>
+
+        <section id="lore" class="reveal">
+            <div class="section-head"><span class="tag">Family lore</span><h2>Meet Princess Naldu</h2></div>
+            <div class="circus-card">
+                <div class="cc-eyebrow">True family history &middot; circa 1920s</div>
+                <div class="cc-name">Princess Naldu</div>
+                <div class="cc-sub">Agnes E. Sukowaty Morris (1895&ndash;1965) &middot; Snake Charmer, Barnum &amp; Bailey Circus</div>
+                <div class="cc-layout">
+                    <div class="cc-photo-frame">
+                        <img src="/assets/images/field-record/princess-naldu.jpg" alt="Agnes E. Sukowaty Morris, billed as Princess Naldu, posing in her snake-charmer costume in front of an American flag, holding a live snake, circa 1920s.">
+                        <div class="cc-caption">PRINCESS NALDU, CIRCA 1920s</div>
                     </div>
-                    <div class="lore-text">
-                        <h3>Princess Naldu</h3>
-                        <p><strong>Agnes E. Sukowaty Morris (1895–1965)</strong> · Snake Charmer, Barnum & Bailey Circus</p>
-                        <p>Long before I ever ran a reptile rescue, my great-aunt Agnes was touring the country with Barnum & Bailey — billed as Princess Naldu, snake charmer, sharing a sideshow bill with J.G. Tarver (the tallest man) and Princess Wee-Wee (the littlest person). Her husband at the time worked the show as a barker, selling tickets to see them. She crisscrossed nearly the entire United States for it. I didn't know any of this when I started rescuing snakes and reptiles of my own — apparently it skipped a couple generations and came right back.</p>
-                        <p class="citation">Family history, verified via Find A Grave · memorial #98838984, Saint Gregory Cemetery, Saint Nazianz, WI.</p>
+                    <div>
+                        <div class="cc-body">Long before I ever ran a reptile rescue, my great-aunt Agnes was touring the country with Barnum &amp; Bailey &mdash; billed as Princess Naldu, snake charmer, sharing a sideshow bill with J.G. Tarver (the tallest man) and Princess Wee-Wee (the littlest person). Her husband at the time worked the show as a barker, selling tickets to see them. She crisscrossed nearly the entire United States for it. I didn't know any of this when I started rescuing snakes and reptiles of my own &mdash; apparently it skipped a couple generations and came right back.</div>
+                        <div class="cc-cite">Family history, verified via Find A Grave &middot; memorial #98838984, Saint Gregory Cemetery, Saint Nazianz, WI.</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ============================================ -->
-    <!--             Off the Clock                    -->
-    <!-- ============================================ -->
-
-    <section class="off-the-clock">
-        <div class="cs-container">
-            <div class="section-head">
-                <span class="tag">Off the clock</span>
-                <h2>In my own words</h2>
-            </div>
-            <div class="clock-body">
-                <p class="clock-text">However you found this page, thank you for actually reading it instead of skimming for keywords. A few things about me that don't fit neatly into a stat bar: I will absolutely stop what I'm doing to help someone catch a loose snake. I keep a rescue running on nights and weekends because the animals don't know it's a nonprofit and neither do I once I'm out there. I over-document everything — ask anyone I've trained. And apparently I come from a long line of people who were never afraid to grab the thing everyone else backs away from, whether that's a snake, a hard problem, or a job nobody else wanted to figure out. I like building things people actually use, and I like fixing things people assume are unfixable. If any of that sounds like someone you'd want on your team, I'd genuinely love to talk.</p>
+        <section id="words" class="reveal">
+            <div class="section-head"><span class="tag">Off the clock</span><h2>In my own words</h2></div>
+            <div class="words-layout">
+                <p class="lede handwritten" style="max-width:66ch;">However you found this page, thank you for actually reading it instead of skimming for keywords. A few things about me that don't fit neatly into a stat bar: I will absolutely stop what I'm doing to help someone catch a loose snake. I keep a rescue running on nights and weekends because the animals don't know it's a nonprofit and neither do I once I'm out there. I over-document everything &mdash; ask anyone I've trained. And apparently I come from a long line of people who were never afraid to grab the thing everyone else backs away from, whether that's a snake, a hard problem, or a job nobody else wanted to figure out. I like building things people actually use, and I like fixing things people assume are unfixable. If any of that sounds like someone you'd want on your team, I'd genuinely love to talk.</p>
                 <div class="polaroid">
-                    <img src="/assets/images/field-record/off-duty-rescue.jpg" alt="Shiann Bowman in a river, smiling, holding a rescue dog wearing a life vest" width="260" height="320" loading="lazy" decoding="async">
+                    <img src="/assets/images/field-record/off-duty-rescue.jpg" alt="Shiann Bowman in a river, smiling, holding a rescue dog wearing a life vest">
                     <div class="p-caption">OFF DUTY, WITH A RESCUE</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ============================================ -->
-    <!--              Field Pass                      -->
-    <!-- ============================================ -->
-
-    <section class="field-pass">
-        <div class="cs-container">
-            <div class="section-head">
-                <span class="tag">Take it with you</span>
-                <h2>Field pass</h2>
-            </div>
-            <p class="pass-intro">For handing this to someone in person — scan to open the live page on their own phone, or print the pass below.</p>
-            <div class="pass-content">
-                <img class="fp-qr" src="/assets/images/field-record/qr-code.png" alt="QR code linking to this Field Record site" width="180" height="180" loading="lazy" decoding="async">
-                <div class="pass-info">
-                    <p class="pass-name">{{ client.name }}</p>
-                    <p class="pass-title">Operations builder · caregiving, crisis response, process design</p>
-                    <p>{{ client.address.city }}, {{ client.address.state }} · <a href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a> · <a href="mailto:{{ client.email }}">{{ client.email }}</a></p>
+        <section id="fieldpass" class="reveal">
+            <div class="section-head"><span class="tag">Take it with you</span><h2>Field pass</h2></div>
+            <p class="lede">For handing this to someone in person &mdash; scan to open the live page on their own phone, or print the pass below.</p>
+            <div class="field-pass-card">
+                <div class="fp-qr"><img src="/assets/images/field-record/qr-code.png" alt="QR code linking to this Field Record site"></div>
+                <div class="fp-info">
+                    <h3>{{ client.name }}</h3>
+                    <div class="fp-tag">Operations builder &middot; caregiving, crisis response, process design</div>
+                    <div class="fp-contact">{{ client.address.city }}, {{ client.address.state }} &middot; {{ client.phoneFormatted }} &middot; {{ client.email }}</div>
+                    <div class="print-btn-row"><button class="print-btn" onclick="window.print()">{% include "components/foot-icon.html" %} Print this pass</button></div>
                 </div>
-                <button class="print-btn" onclick="window.print()">Print this pass</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ============================================ -->
-    <!--          Not Sure Which One?                -->
-    <!-- ============================================ -->
-
-    <section class="contact-cta">
-        <div class="cs-container">
+        <section class="close reveal">
             <h2>Not sure which one?</h2>
             <p>Whichever path fits, the full record backs it up. Happy to walk through any of it directly.</p>
-            <div class="cta-buttons">
-                <a href="tel:{{ client.phoneForTel }}" class="cs-button-solid">Call {{ client.phoneFormatted }}</a>
-                <a href="mailto:{{ client.email }}" class="cs-button-solid">Email me</a>
+            <div class="close-actions">
+                <a class="btn" href="mailto:{{ client.email }}">Email me</a>
+                <a class="btn ghost" href="tel:{{ client.phoneForTel }}">Call {{ client.phoneFormatted }}</a>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 {% endblock %}
