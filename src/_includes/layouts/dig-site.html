@@ -1,0 +1,89 @@
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/critical.css" />
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/dig-site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="/assets/css/dig-site.css">
+        </noscript>
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/dig-site.css" />
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set site = digSites | selectattr('id', 'equalto', siteId) | first %}
+
+    <section class="dig-site-hero">
+        <div class="cs-container">
+            <a href="/" class="back-link">&larr; Back to Basecamp</a>
+            <div class="site-header">
+                <div class="letter-large">{{ site.letter }}</div>
+                <h1>{{ site.title }}</h1>
+                <p class="subtitle">{{ site.subtitle }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dig-site-content">
+        <div class="cs-container">
+            <!-- Vitals Section -->
+            <section class="vitals">
+                <div class="section-head">
+                    <span class="tag">Vitals</span>
+                    <h2>Working stats</h2>
+                </div>
+                <p>{{ site.vitals }}</p>
+            </section>
+
+            <!-- Description -->
+            <section class="dig-description">
+                <p>{{ site.description }}</p>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services">
+                <div class="section-head">
+                    <span class="tag">Dig log</span>
+                    <h2>Services & specialties</h2>
+                </div>
+                <ul class="services-list">
+                    {% for service in site.services %}
+                    <li>{{ service }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <!-- Contact CTA -->
+            <section class="site-cta">
+                <h2>Ready to start a dig?</h2>
+                <p>Let's talk about what you need and how I can help.</p>
+                <div class="cta-buttons">
+                    <a href="tel:{{ client.phoneForTel }}" class="cs-button-solid">Call {{ client.phoneFormatted }}</a>
+                    <a href="mailto:{{ client.email }}" class="cs-button-solid">Email me</a>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Navigation to other dig sites -->
+    <section class="other-sites">
+        <div class="cs-container">
+            <h2>Explore other dig sites</h2>
+            <ul class="sites-nav-grid">
+                {% for otherSite in digSites %}
+                    {% if otherSite.id != siteId %}
+                    <li>
+                        <a href="/dig-sites/{{ otherSite.slug }}/">
+                            <div class="letter-badge">{{ otherSite.letter }}</div>
+                            <h3>{{ otherSite.title }}</h3>
+                        </a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

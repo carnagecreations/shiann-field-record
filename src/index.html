@@ -1,0 +1,157 @@
+---
+title: "Shiann Bowman — Field Record: A Career Excavation"
+description: "Shiann Bowman's professional excavation across operations, caregiving, training, web design, marketing, crisis response, retail, and home cleaning."
+permalink: "/"
+tags: "sitemap"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <!-- Critical styles are loaded first -->
+    <link rel="stylesheet" href="/assets/css/critical.css" />
+
+    <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="/assets/css/local.css">
+        </noscript>
+
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css" />
+    {% endif %}
+
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    <!-- {% include "components/home-schema.html" %} -->
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                  Basecamp                    -->
+    <!-- ============================================ -->
+
+    <section class="field-record-hero">
+        <div class="cs-container">
+            <div class="hero-content">
+                <h1>FIELD RECORD</h1>
+                <span class="subtitle">A Career Excavation</span>
+                <div class="intro">
+                    <p><strong>Shiann Bowman</strong></p>
+                    <p class="tagline">Operations builder — trained in caregiving, crisis response, and process design</p>
+                    <p class="years">11 yrs in field</p>
+                </div>
+                <p class="description">I build the system nobody assigned me to build. Eleven years across live crisis response, direct client care, corporate training design, and nonprofit operations leadership — plus two live one-person businesses today: Avoria (web design & custom apps) and Clean Convictions (house cleaning). I also run a reptile rescue — turns out that's not even new to the family.</p>
+                <div class="contact-info">
+                    <p>Yuma, AZ</p>
+                    <p><a href="tel:928-916-3711">928-916-3711</a></p>
+                    <p><a href="mailto:bowman.shiann@gmail.com">bowman.shiann@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--              Dig Site Selector              -->
+    <!-- ============================================ -->
+
+    <section class="dig-sites-basecamp">
+        <div class="cs-container">
+            <div class="section-head">
+                <span class="tag">Basecamp</span>
+                <h2>Choose a dig site</h2>
+            </div>
+            <p class="intro-text">Each site is a full, dedicated page — its own vitals, dig log, and next step. Nothing here is a subset of something else.</p>
+            <ul class="dig-sites-grid">
+                {% for site in digSites %}
+                <li class="dig-site-card">
+                    <a href="/dig-sites/{{ site.slug }}/">
+                        <div class="letter-badge">{{ site.letter }}</div>
+                        <h3>{{ site.title }}</h3>
+                        <p class="subtitle">{{ site.subtitle }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--              Family Lore                     -->
+    <!-- ============================================ -->
+
+    <section class="family-lore">
+        <div class="cs-container">
+            <div class="section-head">
+                <span class="tag">Family lore</span>
+                <h2>Meet Princess Naldu</h2>
+            </div>
+            <div class="lore-content">
+                <p class="lore-subtitle">True Family History · Circa 1920s</p>
+                <div class="lore-body">
+                    <div class="lore-text">
+                        <h3>Princess Naldu</h3>
+                        <p><strong>Agnes E. Sukowaty Morris (1895–1965)</strong> · Snake Charmer, Barnum & Bailey Circus</p>
+                        <p>Long before I ever ran a reptile rescue, my great-aunt Agnes was touring the country with Barnum & Bailey — billed as Princess Naldu, snake charmer, sharing a sideshow bill with J.G. Tarver (the tallest man) and Princess Wee-Wee (the littlest person). Her husband at the time worked the show as a barker, selling tickets to see them. She crisscrossed nearly the entire United States for it. I didn't know any of this when I started rescuing snakes and reptiles of my own — apparently it skipped a couple generations and came right back.</p>
+                        <p class="citation">Family history, verified via Find A Grave · memorial #98838984, Saint Gregory Cemetery, Saint Nazianz, WI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--             Off the Clock                    -->
+    <!-- ============================================ -->
+
+    <section class="off-the-clock">
+        <div class="cs-container">
+            <div class="section-head">
+                <span class="tag">Off the clock</span>
+                <h2>In my own words</h2>
+            </div>
+            <p class="clock-text">However you found this page, thank you for actually reading it instead of skimming for keywords. A few things about me that don't fit neatly into a stat bar: I will absolutely stop what I'm doing to help someone catch a loose snake. I keep a rescue running on nights and weekends because the animals don't know it's a nonprofit and neither do I once I'm out there. I over-document everything — ask anyone I've trained. And apparently I come from a long line of people who were never afraid to grab the thing everyone else backs away from, whether that's a snake, a hard problem, or a job nobody else wanted to figure out. I like building things people actually use, and I like fixing things people assume are unfixable. If any of that sounds like someone you'd want on your team, I'd genuinely love to talk.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--              Field Pass                      -->
+    <!-- ============================================ -->
+
+    <section class="field-pass">
+        <div class="cs-container">
+            <div class="section-head">
+                <span class="tag">Take it with you</span>
+                <h2>Field pass</h2>
+            </div>
+            <p class="pass-intro">For handing this to someone in person — scan to open the live page on their own phone, or print the pass below.</p>
+            <div class="pass-content">
+                <div class="pass-info">
+                    <p class="pass-name">{{ client.name }}</p>
+                    <p class="pass-title">Operations builder · caregiving, crisis response, process design</p>
+                    <p>{{ client.address.city }}, {{ client.address.state }} · <a href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a> · <a href="mailto:{{ client.email }}">{{ client.email }}</a></p>
+                </div>
+                <button class="print-btn" onclick="window.print()">Print this pass</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--          Not Sure Which One?                -->
+    <!-- ============================================ -->
+
+    <section class="contact-cta">
+        <div class="cs-container">
+            <h2>Not sure which one?</h2>
+            <p>Whichever path fits, the full record backs it up. Happy to walk through any of it directly.</p>
+            <div class="cta-buttons">
+                <a href="tel:{{ client.phoneForTel }}" class="cs-button-solid">Call {{ client.phoneFormatted }}</a>
+                <a href="mailto:{{ client.email }}" class="cs-button-solid">Email me</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% endblock %}
