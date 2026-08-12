@@ -2,6 +2,15 @@
 title: "Marketing & Content | Field Record"
 description: "Shiann Bowman's marketing, content, and community work."
 permalink: "/dig-sites/marketing/"
-layout: "layouts/dig-site.html"
 siteId: "marketing"
----
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    {% set siteData = digSites | selectattr('id', 'equalto', 'marketing') | first %}
+    {% include 'layouts/dig-site.html' %}
+{% endblock %}

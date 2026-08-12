@@ -2,6 +2,15 @@
 title: "Web Design & Builder | Field Record"
 description: "Shiann Bowman's web design and development work."
 permalink: "/dig-sites/webdesign/"
-layout: "layouts/dig-site.html"
 siteId: "webdesign"
----
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    {% set siteData = digSites | selectattr('id', 'equalto', 'webdesign') | first %}
+    {% include 'layouts/dig-site.html' %}
+{% endblock %}

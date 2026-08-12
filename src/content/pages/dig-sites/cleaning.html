@@ -2,6 +2,15 @@
 title: "Home Cleaning | Field Record"
 description: "Clean Convictions - professional home cleaning services."
 permalink: "/dig-sites/cleaning/"
-layout: "layouts/dig-site.html"
 siteId: "cleaning"
----
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    {% set siteData = digSites | selectattr('id', 'equalto', 'cleaning') | first %}
+    {% include 'layouts/dig-site.html' %}
+{% endblock %}

@@ -2,6 +2,15 @@
 title: "Healthcare & Caregiving | Field Record"
 description: "Shiann Bowman's work in caregiving, healthcare, and support."
 permalink: "/dig-sites/caregiving/"
-layout: "layouts/dig-site.html"
 siteId: "caregiving"
----
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    {% set siteData = digSites | selectattr('id', 'equalto', 'caregiving') | first %}
+    {% include 'layouts/dig-site.html' %}
+{% endblock %}

@@ -2,6 +2,15 @@
 title: "Retail & Customer Service | Field Record"
 description: "Shiann Bowman's retail and customer service experience."
 permalink: "/dig-sites/retail/"
-layout: "layouts/dig-site.html"
 siteId: "retail"
----
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/dig-site.css">
+{% endblock %}
+
+{% block body %}
+    {% set siteData = digSites | selectattr('id', 'equalto', 'retail') | first %}
+    {% include 'layouts/dig-site.html' %}
+{% endblock %}
