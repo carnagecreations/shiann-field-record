@@ -13,6 +13,23 @@
 
 <section class="dig-site-content">
     <div class="cs-container">
+        <!-- Fossil ID Section -->
+        {% if site.fossilImage %}
+        <section class="fossil-id">
+            <div class="section-head">
+                <span class="tag">Fossil ID</span>
+                <h2>Species match: {{ site.fossilSpecies }}</h2>
+            </div>
+            <div class="fossil-body">
+                <div class="fossil-photo">
+                    <img src="{{ site.fossilImage }}" alt="{{ site.fossilSpecies }} fossil" width="360" height="280" loading="lazy" decoding="async">
+                    <p class="fossil-credit"><a href="{{ site.fossilCreditUrl }}" target="_blank" rel="noopener">{{ site.fossilCredit }}</a></p>
+                </div>
+                <p class="fossil-blurb">{{ site.fossilBlurb }}</p>
+            </div>
+        </section>
+        {% endif %}
+
         <!-- Vitals Section -->
         <section class="vitals">
             <div class="section-head">

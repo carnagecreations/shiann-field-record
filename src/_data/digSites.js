@@ -13,7 +13,12 @@ module.exports = [
       "Workflow automation",
       "Team coordination & project management",
       "Operational strategy & scaling"
-    ]
+    ],
+    fossilSpecies: "Ankylosaurus",
+    fossilImage: "/assets/images/field-record/fossils/ops-ankylosaurus.jpg",
+    fossilBlurb: "Armored and immovable — built to keep the whole operation standing no matter what hits it.",
+    fossilCredit: "Photo: Tim Evanson, CC BY-SA 2.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Ankylosaur_head_-_cast_-_Custer_County_Montana_-_Museum_of_the_Rockies_-_2013-07-08.jpg"
   },
   {
     id: "caregiving",
@@ -29,7 +34,12 @@ module.exports = [
       "Behavioral support & crisis response",
       "Care coordination with medical teams",
       "Caregiver training & documentation"
-    ]
+    ],
+    fossilSpecies: "Maiasaura",
+    fossilImage: "/assets/images/field-record/fossils/care-maiasaura.jpg",
+    fossilBlurb: "The name literally means “good mother lizard” — famous for nesting in colonies and raising her hatchlings with real care.",
+    fossilCredit: "Photo: Vladimír Socha, CC BY-SA 4.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Maiasaura_skeleton.jpg"
   },
   {
     id: "training",
@@ -45,7 +55,12 @@ module.exports = [
       "Job aids & quick reference guides",
       "Video training creation",
       "Documentation audits & improvement"
-    ]
+    ],
+    fossilSpecies: "Troodon",
+    fossilImage: "/assets/images/field-record/fossils/train-troodon.jpg",
+    fossilBlurb: "Widely considered the smartest dinosaur going, with the largest brain-to-body ratio of the bunch.",
+    fossilCredit: "Photo: Montanoceratops, public domain (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Troodon_MOR_full.png"
   },
   {
     id: "webdesign",
@@ -61,7 +76,12 @@ module.exports = [
       "Responsive design & mobile optimization",
       "Performance optimization",
       "Deployment & DevOps"
-    ]
+    ],
+    fossilSpecies: "Deinonychus",
+    fossilImage: "/assets/images/field-record/fossils/build-deinonychus.jpg",
+    fossilBlurb: "Fast, sharp-clawed, and built to execute — the velociraptor’s bigger, smarter cousin.",
+    fossilCredit: "Photo: Jonathan Chen, CC BY-SA 4.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Deinonychus_FMNH.jpg"
   },
   {
     id: "marketing",
@@ -77,7 +97,12 @@ module.exports = [
       "Social media management",
       "Email marketing campaigns",
       "Brand voice & positioning"
-    ]
+    ],
+    fossilSpecies: "Parasaurolophus",
+    fossilImage: "/assets/images/field-record/fossils/mkt-parasaurolophus.jpg",
+    fossilBlurb: "Grew a hollow head crest that worked like a built-in trombone, broadcasting calls for miles.",
+    fossilCredit: "Photo: Zissoudisctrucker, CC BY-SA 4.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:FMNH_Parasaurolophus_fossil.jpg"
   },
   {
     id: "crisis",
@@ -93,7 +118,12 @@ module.exports = [
       "Hotline & intake operations",
       "De-escalation & peer support",
       "Trauma-informed communication"
-    ]
+    ],
+    fossilSpecies: "Tyrannosaurus rex",
+    fossilImage: "/assets/images/field-record/fossils/crisis-tyrannosaurus-rex.jpg",
+    fossilBlurb: "The one you call when it’s serious — apex responder, handled the biggest problems in the room.",
+    fossilCredit: "Photo: ScottRobertAnselmo, CC BY-SA 3.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Tyrannosaurus_Rex_Holotype.jpg"
   },
   {
     id: "retail",
@@ -109,7 +139,12 @@ module.exports = [
       "Shift supervision & coordination",
       "Conflict resolution",
       "Team training & mentoring"
-    ]
+    ],
+    fossilSpecies: "Triceratops",
+    fossilImage: "/assets/images/field-record/fossils/retail-triceratops.jpg",
+    fossilBlurb: "Held the front line of the herd, unbothered, facing every threat head-on.",
+    fossilCredit: "Photo: Allie Caulfield / MathKnight, CC BY-SA 3.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:LA-Triceratops_mount-2.jpg"
   },
   {
     id: "cleaning",
@@ -125,6 +160,11 @@ module.exports = [
       "Move-out & move-in cleans",
       "Pet-friendly cleaning",
       "Green cleaning options"
-    ]
+    ],
+    fossilSpecies: "Stegosaurus",
+    fossilImage: "/assets/images/field-record/fossils/clean-stegosaurus.jpg",
+    fossilBlurb: "Armor-plated and meticulous — even 150 million years ago, upkeep mattered.",
+    fossilCredit: "Photo: Maidment et al. & Natural History Museum, London, CC BY 4.0 (cropped)",
+    fossilCreditUrl: "https://commons.wikimedia.org/wiki/File:Journal.pone.0138352.g001A.jpg"
   }
 ];
