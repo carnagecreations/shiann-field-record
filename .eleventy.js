@@ -112,6 +112,25 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("filterByTag", (arr, tag) => (arr || []).filter((item) => (item.tags || []).includes(tag)));
 
 	/*
+	 * 🔎 Find By ID
+	 * Returns the first item whose `id` matches. Nunjucks' built-in
+	 * `selectattr(...) | first` misbehaves with a dynamic (non-literal)
+	 * comparison value, returning a stale result across separate pages that
+	 * share the same include — this plain-JS filter sidesteps that bug.
+	 * Usage: {{ digSites | findById(siteId) }}
+	 */
+	eleventyConfig.addFilter("findById", (arr, id) => (arr || []).find((item) => item.id === id));
+
+	/*
+	 * 🚫 Exclude URL
+	 * Returns all items except the one whose `.url` matches — used to drop
+	 * the current page from a "more posts" list. Same rationale as findById:
+	 * avoids Nunjucks' built-in rejectattr with a dynamic comparison value.
+	 * Usage: {{ collections.post | excludeUrl(page.url) }}
+	 */
+	eleventyConfig.addFilter("excludeUrl", (arr, url) => (arr || []).filter((item) => item.url !== url));
+
+	/*
 	 * 🧩 To JSON
 	 * Safely serializes a JS value for embedding in a <script type="application/json"> tag.
 	 * Usage: {{ digSites | toJson | safe }}

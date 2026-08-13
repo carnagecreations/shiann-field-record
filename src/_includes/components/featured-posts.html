@@ -2,7 +2,7 @@
 <!--           More Journal Entries               -->
 <!-- ============================================ -->
 
-{% set otherPosts = collections.post | rejectattr("url", "equalto", page.url) | reverse %}
+{% set otherPosts = collections.post | excludeUrl(page.url) | reverse %}
 {% if otherPosts.length %}
 <section class="reveal">
     <div class="section-head"><span class="tag">More entries</span><h2>Keep reading</h2></div>

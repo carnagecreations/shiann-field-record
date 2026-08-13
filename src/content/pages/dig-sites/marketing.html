@@ -12,6 +12,5 @@ siteId: "marketing"
 {% endblock %}
 
 {% block body %}
-    {% set siteData = digSites | selectattr('id', 'equalto', 'marketing') | first %}
     {% include 'layouts/dig-site.html' %}
 {% endblock %}

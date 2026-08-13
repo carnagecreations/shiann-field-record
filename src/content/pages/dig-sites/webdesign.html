@@ -12,6 +12,5 @@ siteId: "webdesign"
 {% endblock %}
 
 {% block body %}
-    {% set siteData = digSites | selectattr('id', 'equalto', 'webdesign') | first %}
     {% include 'layouts/dig-site.html' %}
 {% endblock %}

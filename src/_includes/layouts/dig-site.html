@@ -1,4 +1,4 @@
-{% set site = siteData %}
+{% set site = digSites | findById(siteId) %}
 {% set entries = ledger | filterByTag(site.tagKey) %}
 {% set builds = builds | filterByTag(site.tagKey) %}
 {% set siteBadges = badges | filterByTag(site.tagKey) %}
