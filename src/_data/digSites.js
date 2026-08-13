@@ -10,6 +10,13 @@ module.exports = [
     kicker: "Lens · Operations & Admin",
     headline: "Operations & Admin",
     dek: "COO-level ownership of scheduling, staffing, and process — the person who builds the system so nothing falls through the cracks, then documents it so it survives after she leaves the room.",
+    pitch: "Bring me in and the chaos gets a system — one that keeps running after I leave the room.",
+    offerPoints: [
+      "A real operational audit, not a generic checklist — I find what's actually breaking",
+      "SOPs and job aids your team can follow correctly under pressure",
+      "Scheduling, staffing, and vendor coordination handled end-to-end",
+      "Systems built to outlast me, so nothing depends on tribal knowledge"
+    ],
     stats: [
       { name: "Operations Leadership", pct: 90 },
       { name: "Documentation & SOPs", pct: 95 },
@@ -45,6 +52,13 @@ module.exports = [
     kicker: "Lens · Healthcare & Caregiving",
     headline: "Senior, Veteran & Special-Needs Care",
     dek: "5+ years of direct client care for veterans, seniors, and clients with autism and cerebral palsy — plus the operational eye to fix the system around the care.",
+    pitch: "One-on-one care from someone who treats your family member like family — not a task on a shift list.",
+    offerPoints: [
+      "Individualized care plans built around the actual person, not a template",
+      "Direct, proactive communication with doctors, family, and other providers",
+      "Calm, trained composure if a medical or behavioral situation goes sideways",
+      "Real experience with seniors, veterans, autism, and cerebral palsy — not just a certificate"
+    ],
     stats: [
       { name: "Direct Client Care", pct: 95 },
       { name: "Care Plan Documentation", pct: 90 },
@@ -73,6 +87,13 @@ module.exports = [
     kicker: "Lens · Training & Documentation",
     headline: "Training & Documentation",
     dek: "SOPs, onboarding guides, and job aids built for real teams — five years doing it professionally at scale, plus three volunteer programs still running on the same discipline today.",
+    pitch: "Documentation people actually use — because it's written for someone stressed and in a hurry, not for a binder nobody opens.",
+    offerPoints: [
+      "SOPs and onboarding guides tested on someone who's never done the task before they ship",
+      "Job aids built for the worst day on the floor, not the demo",
+      "Full training program design — not just a slide deck and a hope",
+      "Systems that keep new hires productive whether or not I'm in the room"
+    ],
     stats: [
       { name: "Curriculum & SOP Design", pct: 95 },
       { name: "Onboarding Program Design", pct: 92 },
@@ -99,6 +120,13 @@ module.exports = [
     kicker: "Lens · Web Design & Builder",
     headline: "Web Design & App Development",
     dek: "Not just requirements — shipped software. A 60-screen operations platform, live client websites, and a running studio (Avoria) built on hand-coded, no-subscription tech: one flat price, and no invoice until the client approves a working draft.",
+    pitch: "A hand-coded site or app at one flat price — and you don't pay a cent until you approve a working draft.",
+    offerPoints: [
+      "No subscriptions, no page-builder lock-in, $0/month hosting",
+      "A real working draft before any invoice exists — not a mockup, not a promise",
+      "50+ clients, 5.0 average rating, zero refund requests ever",
+      "Full-stack capability on tap if you need more than a marketing site"
+    ],
     stats: [
       { name: "Front-end Build (HTML/CSS/JS)", pct: 82 },
       { name: "Full-stack Product Design", pct: 75 },
@@ -133,6 +161,13 @@ module.exports = [
     kicker: "Lens · Marketing & Content",
     headline: "Marketing & Content",
     dek: "Ran the full content and growth function for a 501(c)(3) — copy, campaigns, community, and paid strategy — after four years freelancing the same for other clients.",
+    pitch: "Content and campaigns run by someone who's already grown a real organization from the ground up — not just studied how.",
+    offerPoints: [
+      "Copywriting and brand voice that doesn't read like a template",
+      "Campaign execution across email, social, and paid — not just one channel",
+      "Community growth strategy, not a content calendar on autopilot",
+      "Performance tracking that actually changes what happens next"
+    ],
     stats: [
       { name: "Copywriting & Content", pct: 78 },
       { name: "Campaign Execution", pct: 75 },
@@ -160,6 +195,13 @@ module.exports = [
     kicker: "Lens · Crisis & Support",
     headline: "Crisis Response & Support",
     dek: "Three years on live emergency calls at Uber, coordinating with first responders under time pressure, with full compliance documentation on every case.",
+    pitch: "Composure on the worst call of someone's day, with the documentation to back it up afterward.",
+    offerPoints: [
+      "Live incident handling under real time pressure, not simulated scenarios",
+      "Direct coordination with first responders and other agencies as it's happening",
+      "Full compliance documentation on every case, every time — no gaps",
+      "Trauma-informed communication that de-escalates instead of making things worse"
+    ],
     stats: [
       { name: "Composure Under Pressure", pct: 92 },
       { name: "Live Call Handling", pct: 88 },
@@ -186,6 +228,13 @@ module.exports = [
     kicker: "Lens · Retail & Customer Service",
     headline: "Retail & Customer Service",
     dek: "No formal retail title on the resume — but the job is the same skill set I've run for a decade: stay composed with a difficult person, keep records accurate under pressure, show up every shift, and make people feel taken care of. I built my own booking, quoting, and scheduling systems from scratch, so a POS or scheduling tool won't slow me down for long.",
+    pitch: "The shift that never has to be double-checked — reliable, composed, and ready to start now.",
+    offerPoints: [
+      "Zero-drama handling of difficult customers, every time, not just on a good day",
+      "Accurate cash handling and recordkeeping under pressure",
+      "Immediate availability for interviews in Yuma, AZ",
+      "Comfortable picking up any POS or scheduling system fast — I've built my own"
+    ],
     stats: [
       { name: "Customer-Facing Composure", pct: 90 },
       { name: "Reliability & Punctuality", pct: 95 },
@@ -213,6 +262,13 @@ module.exports = [
     kicker: "Lens · Home Cleaning",
     headline: "Home Cleaning",
     dek: "Flat-rate house cleaning through Clean Convictions — regular cleaning from $89, deep cleans from $179, move-in/move-out from $199, plus office & commercial service. Published pricing, pet-safe products, a military/veteran discount, and a simple guarantee: miss a spot, tell us within 24 hours, and we re-clean it free.",
+    pitch: "A flat-rate clean with a real guarantee — miss a spot, tell us within 24 hours, and we're back free.",
+    offerPoints: [
+      "Published flat-rate pricing — no in-home estimate, no surprise invoice",
+      "Pet-safe products and a military/veteran discount",
+      "Regular, deep, and move-in/move-out cleans, plus office & commercial",
+      "A free instant quote online in about 60 seconds, no sales call required"
+    ],
     stats: [
       { name: "Attention to Detail", pct: 95 },
       { name: "Reliability & Consistency", pct: 96 },

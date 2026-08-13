@@ -26,6 +26,25 @@
         {% endif %}
     </div>
 
+    {% if site.pitch %}
+    <section class="reveal">
+        <div class="offer-card">
+            <p class="offer-pitch">{{ site.pitch }}</p>
+            {% if site.offerPoints %}
+            <ul class="offer-points">
+                {% for point in site.offerPoints %}
+                <li>{{ point }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="cta-row">
+                <a class="btn brass" {% if "http" in site.ctaPrimary.href %}target="_blank" rel="noopener"{% endif %} href="{{ site.ctaPrimary.href }}">{{ site.ctaPrimary.label }}</a>
+                <a class="btn ghost" href="{{ site.ctaSecondary.href }}">{{ site.ctaSecondary.label }}</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
     {% if site.flagship %}
     <section class="reveal">
         {% set cs = site.flagship %}
